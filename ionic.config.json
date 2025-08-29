@@ -1,0 +1,7 @@
+{
+  "name": "proxi-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
