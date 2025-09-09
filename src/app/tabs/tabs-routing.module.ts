@@ -24,18 +24,6 @@ const routes: Routes = [
         loadChildren: () => import('../pages/user/profile/profile.module').then(m => m.ProfilePageModule)
       },
       {
-        path: 'home',
-        loadChildren: () => import('../pages/provider/home/home.module').then(m => m.HomePageModule)
-      },
-      {
-        path: 'my-appointments',
-        loadChildren: () => import('../pages/provider/my-appointments/my-appointments.module').then(m => m.MyAppointmentsPageModule)
-      },
-      {
-        path: 'service',
-        loadChildren: () => import('../pages/provider/service/service.module').then(m => m.ServicePageModule)
-      },
-      {
         path: 'profile',
         loadChildren: () => import('../pages/provider/profile/profile.module').then(m => m.ProfilePageModule)
       },
@@ -58,6 +46,22 @@ const routes: Routes = [
       {
         path: 'settings',
         loadChildren: () => import('../pages/user/settings/settings.module').then(m => m.SettingsPageModule)
+      },
+      {
+        path: 'settings-provider',
+        loadChildren: () => import('../pages/provider/settings-provider/settings-provider.module').then(m => m.SettingsProviderPageModule)
+      },
+      {
+        path: 'home-provider',
+        loadChildren: () => import('../pages/provider/home-provider/home-provider.module').then(m => m.HomeProviderPageModule)
+      },
+      {
+        path: 'my-appointments-provider',
+        loadChildren: () => import('../pages/provider/my-appointments-provider/my-appointments-provider.module').then(m => m.MyAppointmentsProviderPageModule)
+      },
+      {
+        path: 'service-provider',
+        loadChildren: () => import('../pages/provider/service-provider/service-provider.module').then(m => m.ServiceProviderPageModule)
       },
       {
         path: '',

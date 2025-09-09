@@ -63,6 +63,7 @@ export class SignUpPage implements OnInit {
       phone: this.signUpModel.phoneNumber,
       password: this.signUpModel.password,
       role: 'user',
+      // role: 'provider',
       // role: 'admin',
     }
     console.log(data)

@@ -1,4 +1,4 @@
-<ion-tabs (ionTabsWillChange)="selected($event)">
+<ion-tabs (ionTabsWillChange)="selected($event)" *ngIf="userDetail?.role==='user'">
 
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="home">
@@ -40,6 +40,56 @@
         <p class="tabsSelected_name ABeeZee">Settings</p>
       </div>
       <div class="tabsSelected center" *ngIf="currentTabs!=='settings'">
+        <ion-icon class="icon" aria-hidden="true" src="../../assets/tabsIcon/tabs-icon-4.svg"></ion-icon>
+        <p class="tabsSelected_name1 ABeeZee">Settings</p>
+      </div>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>
+
+<ion-tabs (ionTabsWillChange)="selected($event)" *ngIf="userDetail?.role==='provider'">
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home-provider">
+      <div class="tabsSelected center" *ngIf="currentTabs==='home-provider'">
+        <ion-icon class="icon" aria-hidden="true" src="../../assets/tabsIcon/tabs-icon-1selected.svg"></ion-icon>
+        <p class="tabsSelected_name ABeeZee">Home</p>
+      </div>
+      <div class="tabsSelected center" *ngIf="currentTabs!=='home-provider'">
+        <ion-icon class="icon" aria-hidden="true" src="../../assets/tabsIcon/tabs-icon-1.svg"></ion-icon>
+        <p class="tabsSelected_name1 ABeeZee">Home</p>
+      </div>
+    </ion-tab-button>
+
+    <ion-tab-button tab="my-appointments-provider">
+      <div class="tabsSelected center" *ngIf="currentTabs==='my-appointments-provider'">
+        <ion-icon class="icon" aria-hidden="true" src="../../assets/tabsIcon/tabs-icon-2selected.svg"></ion-icon>
+        <p class="tabsSelected_name ABeeZee">My Appointments</p>
+      </div>
+      <div class="tabsSelected center" *ngIf="currentTabs!=='my-appointments-provider'">
+        <ion-icon class="icon" aria-hidden="true" src="../../assets/tabsIcon/tabs-icon-2.svg"></ion-icon>
+        <p class="tabsSelected_name1 ABeeZee">My Appointments</p>
+      </div>
+    </ion-tab-button>
+
+    <ion-tab-button tab="service-provider">
+      <div class="tabsSelected center" *ngIf="currentTabs==='service-provider'">
+        <ion-icon class="icon" aria-hidden="true" src="../../assets/tabsIcon/tabs-icon-5selected.svg"></ion-icon>
+        <p class="tabsSelected_name ABeeZee">Service</p>
+      </div>
+      <div class="tabsSelected center" *ngIf="currentTabs!=='service-provider'">
+        <ion-icon class="icon" aria-hidden="true" src="../../assets/tabsIcon/tabs-icon-5.svg"></ion-icon>
+        <p class="tabsSelected_name1 ABeeZee">Service</p>
+      </div>
+    </ion-tab-button>
+
+    <ion-tab-button tab="settings-provider">
+      <div class="tabsSelected center" *ngIf="currentTabs==='settings-provider'">
+        <ion-icon class="icon" aria-hidden="true" src="../../assets/tabsIcon/tabs-icon-4selected.svg"></ion-icon>
+        <p class="tabsSelected_name ABeeZee">Settings</p>
+      </div>
+      <div class="tabsSelected center" *ngIf="currentTabs!=='settings-provider'">
         <ion-icon class="icon" aria-hidden="true" src="../../assets/tabsIcon/tabs-icon-4.svg"></ion-icon>
         <p class="tabsSelected_name1 ABeeZee">Settings</p>
       </div>

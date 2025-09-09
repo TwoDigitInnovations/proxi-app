@@ -1,0 +1,26 @@
+<ion-header>
+  <div class="mainHeader">
+    <div class="left">
+      <p class="mainTitle_text">Appointments</p>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content class="mainBackground">
+  <div style="padding: 20px;">
+    <div class="mainCard">
+      <div class="appointmentsCard" *ngFor="let item of [1,2,3,4,5,6,7]">
+        <div class="appointmentsCard_div">
+          <div class="travisTanner_div">
+            <img class="appointmentsUser_img" src="../../../../assets/images/image-6.png" />
+            <div>
+              <p class="travisTanner_text">Travis Tanner</p>
+              <p class="businessMeeting_text">Business meeting</p>
+            </div>
+          </div>
+          <ion-button class="seeDetails_btn">See Details</ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

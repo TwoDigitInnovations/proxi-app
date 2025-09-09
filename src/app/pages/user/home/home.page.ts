@@ -24,7 +24,7 @@ export class HomePage implements OnInit {
   rating: any = 4;
   isAlertOpen: any = false;
   timeSlotOpen: any = false;
-  payAmountOpen: any = true;
+  payAmountOpen: any = false;
 
   payAmountModel: any = {
     fullName: '',

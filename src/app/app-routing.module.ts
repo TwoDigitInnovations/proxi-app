@@ -11,8 +11,8 @@ if (userDetail) {
 const routes: Routes = [
   {
     path: '',
-    // redirectTo: token ? user.type === 'PROVIDER' ? '/tabs/home' : '/tabs/home' : '/sign-in',
-    redirectTo: '/tabs/home',
+    redirectTo: token ? user.role === 'provider' ? '/tabs/home-provider' : '/tabs/home' : '/sign-in',
+    // redirectTo: '/tabs/home',
     // redirectTo: '/sign-in',
     pathMatch: 'full'
   },
@@ -49,18 +49,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/user/profile/profile.module').then(m => m.ProfilePageModule)
   },
   {
-    path: 'home',
-    loadChildren: () => import('./pages/provider/home/home.module').then(m => m.HomePageModule)
-  },
-  {
-    path: 'my-appointments',
-    loadChildren: () => import('./pages/provider/my-appointments/my-appointments.module').then(m => m.MyAppointmentsPageModule)
-  },
-  {
-    path: 'service',
-    loadChildren: () => import('./pages/provider/service/service.module').then(m => m.ServicePageModule)
-  },
-  {
     path: 'profile',
     loadChildren: () => import('./pages/provider/profile/profile.module').then(m => m.ProfilePageModule)
   },
@@ -94,7 +82,23 @@ const routes: Routes = [
   },
   {
     path: 'payment-success',
-    loadChildren: () => import('./pages/user/payment-success/payment-success.module').then( m => m.PaymentSuccessPageModule)
+    loadChildren: () => import('./pages/user/payment-success/payment-success.module').then(m => m.PaymentSuccessPageModule)
+  },
+  {
+    path: 'settings-provider',
+    loadChildren: () => import('./pages/provider/settings-provider/settings-provider.module').then(m => m.SettingsProviderPageModule)
+  },
+  {
+    path: 'home-provider',
+    loadChildren: () => import('./pages/provider/home-provider/home-provider.module').then(m => m.HomeProviderPageModule)
+  },
+  {
+    path: 'my-appointments-provider',
+    loadChildren: () => import('./pages/provider/my-appointments-provider/my-appointments-provider.module').then(m => m.MyAppointmentsProviderPageModule)
+  },
+  {
+    path: 'service-provider',
+    loadChildren: () => import('./pages/provider/service-provider/service-provider.module').then(m => m.ServiceProviderPageModule)
   },
 ];
 @NgModule({
