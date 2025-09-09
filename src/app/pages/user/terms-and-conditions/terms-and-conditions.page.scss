@@ -1,0 +1,47 @@
+ion-header {
+    background: #F05023;
+    height: 65px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.header-md {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.mainHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.back_icon {
+    height: 20px;
+    width: 20px;
+    color: white;
+}
+
+.mainTitle_text {
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    margin: 0px;
+    padding-left: 10px;
+}
+
+.mainBackground {
+    --background: white;
+    height: 100%;
+    width: 100%;
+}
+
+.loremIpsum_text {
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+    margin: 0px;
+}

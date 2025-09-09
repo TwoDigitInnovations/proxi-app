@@ -7,7 +7,20 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class TabsPage {
+  userDetail: any;
+  currentTabs: any;
 
-  constructor() {}
+  constructor() { }
 
+  ionViewWillEnter() {
+    const userDetail = localStorage.getItem('userDetail')
+    if (userDetail) {
+      this.userDetail = JSON.parse(userDetail)
+    }
+  }
+
+  selected(e: any) {
+    console.log(e)
+    this.currentTabs = e.tab
+  }
 }

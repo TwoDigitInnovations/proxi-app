@@ -1,0 +1,26 @@
+<ion-header>
+  <div class="mainHeader">
+    <div class="left">
+      <p class="mainTitle_text PPNeueMontreal">My Appointments</p>
+    </div>
+    <img class="user_icon" src="../../../../assets/images/userIcon.png" />
+  </div>
+</ion-header>
+
+<ion-content class="mainBackground">
+  <div style="padding: 20px;">
+    <div class="mainCard">
+      <div class="card" *ngFor="let items of [1,2,3,4,5,6,7,8,9]" (click)="myAppointmentsDetails()">
+        <div class="mainNotifications_div">
+          <div class="notifications_div">
+            <img class="notificationsIcon" src="../../../../assets/images/notificationsIcon.png" />
+          </div>
+          <div>
+            <p class="date_text Inter">8th July, 2023</p>
+            <p class="andrew_text Inter">Dr. Andrew</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,52 @@
+<ion-header>
+  <div class="mainHeader">
+    <div class="left">
+      <ion-icon class="back_icon" (click)="goBack()" name="chevron-back-outline"></ion-icon>
+      <p class="mainTitle_text PPNeueMontreal">Profile</p>
+    </div>
+    <!-- <img class="user_icon" src="../../../../assets/images/userIcon.png" /> -->
+    <div class="editIcon_div1" *ngIf="!isEdit" (click)="isEdit= true">
+      <img class="editImg1" src="../../../../assets/images/editImg.png" />
+    </div>
+  </div>
+</ion-header>
+
+<ion-content class="mainBackground">
+  <div style="padding: 20px;">
+    <div class="center" style="position: relative;">
+      <div class="profileImg_div">
+        <ion-avatar class="profileImg">
+          <img class="profileImg" src="../../../../assets/images/profileImg.png" />
+        </ion-avatar>
+        <div class="editIcon_div" *ngIf="isEdit" (click)="takePicture()">
+          <img class="editImg" src="../../../../assets/images/editImg.png" />
+        </div>
+      </div>
+    </div>
+
+    <form class="w_100" #profileForm="ngForm">
+      <div class="w_100">
+        <ion-input [readonly]="!isEdit" class="username_input Raleway" type="text" placeholder="Name" name="name"
+          [(ngModel)]="profileModel.name" #name="ngModel" required></ion-input>
+        <p class="validField" *ngIf="submitted && name?.errors?.['required']">Name is required.</p>
+      </div>
+
+      <div class="w_100">
+        <ion-input [readonly]="!isEdit" class="email_input Raleway" type="email" placeholder="Email" name="email"
+          pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="profileModel.email" #email="ngModel"
+          required></ion-input>
+        <p class="validField" *ngIf="submitted && email?.errors?.['required']">Email is required.</p>
+        <p class="validField" *ngIf="submitted && email?.errors?.['pattern']">Invalid your email</p>
+      </div>
+
+      <div class="w_100">
+        <ion-input [readonly]="!isEdit" class="email_input Raleway" type="Number" placeholder="Phone Number"
+          name="phoneNumber" [(ngModel)]="profileModel.phoneNumber" #phoneNumber="ngModel" required></ion-input>
+        <p class="validField" *ngIf="submitted && phoneNumber?.errors?.['required']">Phone Number is required.</p>
+      </div>
+
+      <ion-button class="signIn_btn NunitoSans" *ngIf="isEdit" (click)="updateProfile(profileForm)">Save
+        Changes</ion-button>
+    </form>
+  </div>
+</ion-content>

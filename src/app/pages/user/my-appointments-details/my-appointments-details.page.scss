@@ -1,0 +1,82 @@
+ion-header {
+    background: #F05023;
+    height: 65px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.header-md {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.mainHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    gap: 10px;
+}
+
+.back_icon {
+    height: 20px;
+    width: 20px;
+    color: white;
+}
+
+.mainTitle_text {
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    margin: 0px;
+    padding-left: 10px;
+}
+
+.user_icon {
+    width: 18px;
+    height: 18px;
+}
+
+.mainBackground {
+    --background: white;
+    height: 100%;
+    width: 100%;
+}
+
+.drAndrew_img {
+    width: 190px;
+    height: 190px;
+}
+
+.drAndrew_text {
+    font-size: 27px;
+    font-weight: 500;
+    color: #292929;
+    margin: 20px 0px 20px 0px;
+}
+
+.descript_text {
+    font-size: 14px;
+    font-weight: 400;
+    color: #292929;
+    text-align: center;
+    margin: 0px 0px 20px 0px;
+}
+
+.signIn_btn {
+    --border-radius: 10px;
+    --background: #FF5207;
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 100%;
+    margin: 0px;
+    height: 50px;
+    text-transform: none;
+    --box-shadow: 0px 5px 20px 10px #2048BD33;
+}

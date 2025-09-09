@@ -2,6 +2,10 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "skipLibCheck": true,
+    // "types": [
+    //   "google.maps"
+    // ],
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -19,15 +23,23 @@
     "target": "es2022",
     "module": "es2020",
     "lib": [
-      "es2018", 
+      "es2018",
       "dom"
     ],
     "useDefineForClassFields": false
   },
+  // "include": [
+  //   "src/**/*.ts",
+  //   "src/types/**/*.d.ts"
+  // ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  // "skipLibCheck": true,
+  // "types": [
+  //   "google.maps"
+  // ]
 }

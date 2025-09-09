@@ -1,0 +1,104 @@
+.mainBackground {
+    --background: white;
+    height: 100%;
+    width: 100%;
+}
+
+.main_div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.welcome_div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.welcome_text {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1E0909;
+    margin: 0px 0px 3px 0px;
+}
+
+.signUpDetails_text {
+    font-size: 14px;
+    font-weight: 400;
+    color: #858080;
+    margin: 0px;
+}
+
+.bg_img {
+    // height: 133px;
+    // width: 133px;
+    height: 200px;
+    width: 200px;
+    object-fit: contain;
+    margin: 20px 0px;
+}
+
+.email {
+    --border-radius: 10px;
+    color: #797979;
+    // color: #797979D9;
+    font-size: 16px;
+    font-weight: 400;
+    --border-color: #858080;
+    // --border-color: #85808033;
+}
+
+.password {
+    --border-radius: 10px;
+    color: #797979;
+    font-size: 16px;
+    font-weight: 400;
+    --border-color: #858080;
+    margin: 20px 0px 0px 0px;
+}
+
+.signUp_text {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: center;
+    color: #858080;
+    margin: 0px;
+    padding: 50px 0px 30px 0px;
+}
+
+.signIn_btn {
+    --border-radius: 10px;
+    --background: #FF5207;
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 100%;
+    margin: 0px;
+    height: 50px;
+    text-transform: none;
+    --box-shadow: 0px 5px 20px 10px #2048BD33;
+}
+
+.account_text {
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    color: #858080;
+    margin: 0px;
+    padding: 20px 0px 20px 0px;
+}
+
+.forgetPassword {
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    color: #858080;
+    margin: 0px;
+}

@@ -1,0 +1,56 @@
+<ion-header>
+  <div class="mainHeader">
+    <div class="left">
+      <ion-icon class="back_icon" (click)="goBack()" name="chevron-back-outline"></ion-icon>
+      <p class="mainTitle_text PPNeueMontreal">Purpose of Visit</p>
+    </div>
+    <img class="user_icon" src="../../../../assets/images/userIcon.png" />
+  </div>
+</ion-header>
+
+<ion-content class="mainBackground">
+  <div style="padding: 20px;">
+    <form class="w_100" #purposeOfVisitForm="ngForm">
+      <ion-input class="name" type="text" label="Name" label-placement="floating" fill="outline"
+        placeholder="Enter Name" name="fullName" [(ngModel)]="purposeOfVisitModel.fullName" #fullName="ngModel"
+        required></ion-input>
+      <p class="validField" *ngIf="submitted && fullName?.errors?.['required']">Name is required.</p>
+
+      <ion-input class="password" type="email" label="Email" label-placement="floating" fill="outline"
+        placeholder="Enter email" name="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        [(ngModel)]="purposeOfVisitModel.email" #email="ngModel" required></ion-input>
+      <p class="validField" *ngIf="submitted && email?.errors?.['required']">Email is required.</p>
+
+      <p class="validField" *ngIf="submitted && email?.errors?.['pattern']">Invalid your email</p>
+
+      <ion-input class="password" type="number" label="Mobile Number" label-placement="floating" fill="outline"
+        placeholder="Enter Mobile Number" name="phoneNumber" [(ngModel)]="purposeOfVisitModel.phoneNumber"
+        #phoneNumber="ngModel" required></ion-input>
+      <p class="validField" *ngIf="submitted && phoneNumber?.errors?.['required']">Mobile Number is required.</p>
+
+      <div class="w_100">
+        <div class="selectCountry_div">
+          <ion-select class="selectCountry" name="gender" [(ngModel)]="purposeOfVisitModel.gender" #gender="ngModel"
+            required>
+            <ion-select-option class="w_100" value="">Gender</ion-select-option>
+            <ion-select-option class="w_100" value="yes">Male</ion-select-option>
+            <ion-select-option class="w_100" value="no">Female</ion-select-option>
+          </ion-select>
+        </div>
+        <p class="validField" *ngIf="submitted && gender?.errors?.['required']">
+          Gender is required.
+        </p>
+      </div>
+
+      <ion-textarea class="textarea" label="Purpose of Visit" labelPlacement="floating" fill="outline"
+        placeholder="Enter text" rows="4" name="purposeOfVisitDescript"
+        [(ngModel)]="purposeOfVisitModel.purposeOfVisitDescript" #purposeOfVisitDescript="ngModel"
+        required></ion-textarea>
+      <p class="validField" *ngIf="submitted && purposeOfVisitDescript?.errors?.['required']">Purpose of Visit is
+        required.
+      </p>
+
+      <ion-button class="signIn_btn" (click)="submit(purposeOfVisitForm)">Submit</ion-button>
+    </form>
+  </div>
+</ion-content>

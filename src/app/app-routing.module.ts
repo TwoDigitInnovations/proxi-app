@@ -1,11 +1,101 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+const token = localStorage.getItem('token')
+const userDetail = localStorage.getItem('userDetail')
+let user: any = {}
+if (userDetail) {
+  user = JSON.parse(userDetail)
+}
+
 const routes: Routes = [
   {
     path: '',
+    // redirectTo: token ? user.type === 'PROVIDER' ? '/tabs/home' : '/tabs/home' : '/sign-in',
+    redirectTo: '/tabs/home',
+    // redirectTo: '/sign-in',
+    pathMatch: 'full'
+  },
+  {
+    path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  }
+  },
+  {
+    path: 'sign-in',
+    loadChildren: () => import('./pages/auth/sign-in/sign-in.module').then(m => m.SignInPageModule)
+  },
+  {
+    path: 'sign-up',
+    loadChildren: () => import('./pages/auth/sign-up/sign-up.module').then(m => m.SignUpPageModule)
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: () => import('./pages/auth/forgot-password/forgot-password.module').then(m => m.ForgotPasswordPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/user/home/home.module').then(m => m.HomePageModule)
+  },
+  {
+    path: 'my-appointments',
+    loadChildren: () => import('./pages/user/my-appointments/my-appointments.module').then(m => m.MyAppointmentsPageModule)
+  },
+  {
+    path: 'history',
+    loadChildren: () => import('./pages/user/history/history.module').then(m => m.HistoryPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/user/profile/profile.module').then(m => m.ProfilePageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/provider/home/home.module').then(m => m.HomePageModule)
+  },
+  {
+    path: 'my-appointments',
+    loadChildren: () => import('./pages/provider/my-appointments/my-appointments.module').then(m => m.MyAppointmentsPageModule)
+  },
+  {
+    path: 'service',
+    loadChildren: () => import('./pages/provider/service/service.module').then(m => m.ServicePageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/provider/profile/profile.module').then(m => m.ProfilePageModule)
+  },
+  {
+    path: 'terms-and-conditions',
+    loadChildren: () => import('./pages/user/terms-and-conditions/terms-and-conditions.module').then(m => m.TermsAndConditionsPageModule)
+  },
+  {
+    path: 'privacy-policy',
+    loadChildren: () => import('./pages/user/privacy-policy/privacy-policy.module').then(m => m.PrivacyPolicyPageModule)
+  },
+  {
+    path: 'terms-and-conditions',
+    loadChildren: () => import('./pages/provider/terms-and-conditions/terms-and-conditions.module').then(m => m.TermsAndConditionsPageModule)
+  },
+  {
+    path: 'privacy-policy',
+    loadChildren: () => import('./pages/provider/privacy-policy/privacy-policy.module').then(m => m.PrivacyPolicyPageModule)
+  },
+  {
+    path: 'my-appointments-details',
+    loadChildren: () => import('./pages/user/my-appointments-details/my-appointments-details.module').then(m => m.MyAppointmentsDetailsPageModule)
+  },
+  {
+    path: 'purpose-of-visit',
+    loadChildren: () => import('./pages/user/purpose-of-visit/purpose-of-visit.module').then(m => m.PurposeOfVisitPageModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./pages/user/settings/settings.module').then(m => m.SettingsPageModule)
+  },
+  {
+    path: 'payment-success',
+    loadChildren: () => import('./pages/user/payment-success/payment-success.module').then( m => m.PaymentSuccessPageModule)
+  },
 ];
 @NgModule({
   imports: [
@@ -13,4 +103,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

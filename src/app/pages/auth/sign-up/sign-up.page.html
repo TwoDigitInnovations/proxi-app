@@ -1,0 +1,54 @@
+<ion-content class="mainBackground">
+  <div style="padding: 20px;" class="h_100">
+    <div class="main_div">
+      <div class="welcome_div">
+        <p class="welcome_text PPNeueMontreal">Welcome</p>
+        <p class="signUpDetails_text PPNeueMontreal">Please enter your sign up details.</p>
+      </div>
+
+      <form class="w_100" #signUpForm="ngForm">
+        <ion-input class="name PPNeueMontreal" type="text" label="Name" label-placement="floating" fill="outline"
+          placeholder="Enter Name" name="fullName" [(ngModel)]="signUpModel.fullName" #fullName="ngModel"
+          required></ion-input>
+        <p class="validField" *ngIf="submitted && fullName?.errors?.['required']">Name is required.</p>
+
+        <ion-input class="password PPNeueMontreal" type="email" label="Email" label-placement="floating" fill="outline"
+          placeholder="Enter email" name="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          [(ngModel)]="signUpModel.email" #email="ngModel" required></ion-input>
+        <p class="validField" *ngIf="submitted && email?.errors?.['required']">Email is required.</p>
+
+        <p class="validField" *ngIf="submitted && email?.errors?.['pattern']">Invalid your email</p>
+
+        <ion-input class="password PPNeueMontreal" type="number" label="Mobile Number" label-placement="floating"
+          fill="outline" placeholder="Enter Mobile Number" name="phoneNumber" [(ngModel)]="signUpModel.phoneNumber"
+          #phoneNumber="ngModel" required></ion-input>
+        <p class="validField" *ngIf="submitted && phoneNumber?.errors?.['required']">Mobile Number is required.</p>
+
+        <ion-input class="password PPNeueMontreal" type="password" label="Password" label-placement="floating"
+          fill="outline" placeholder="**************" name="password" [(ngModel)]="signUpModel.password"
+          #password="ngModel" required></ion-input>
+        <p class="validField" *ngIf="submitted && password?.errors?.['required']">Password is required.</p>
+
+        <div *ngIf="otpShow">
+          <ion-input class="password PPNeueMontreal" type="number" label="OTP" label-placement="floating" fill="outline"
+            placeholder="*****" name="otp" [(ngModel)]="signUpModel.otp" #otp="ngModel"
+            [required]="otpShow"></ion-input>
+          <p class="validField" *ngIf="submitted && otp?.errors?.['required']">
+            OTP is required.
+          </p>
+        </div>
+
+        <p class="signUp_text">By clicking Sign up, you agree with our <span class="f_700"
+            (click)="termsAndConditionsPage()">Terms and Conditions </span>and <span class="f_700"
+            (click)="privacyPolicyPage()">Privacy Policy</span></p>
+
+        <ion-button class="signIn_btn PPNeueMontreal" (click)="validationForm(signUpForm)">Next</ion-button>
+
+        <p class="account_text PPNeueMontreal">Already have any account? <span class="f_700" (click)="signInPage()">Sign
+            in</span></p>
+
+        <!-- <p class="forgetPassword">Forget Password ?</p> -->
+      </form>
+    </div>
+  </div>
+</ion-content>

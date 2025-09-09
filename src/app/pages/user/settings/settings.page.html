@@ -1,0 +1,51 @@
+<ion-header>
+  <div class="mainHeader">
+    <div class="left">
+      <p class="mainTitle_text PPNeueMontreal">Settings</p>
+    </div>
+    <img class="user_icon" src="../../../../assets/images/userIcon.png" />
+  </div>
+</ion-header>
+
+<ion-content class="mainBackground">
+  <div style="padding: 20px;">
+    <ion-select class="selectLanguage_text" label="Your Language" [value]="langSelected"
+      (ionChange)="handleChange($event.target.value)" cancelText="CANCEL" okText="OK">
+      <ion-select-option value="en">English</ion-select-option>
+      <ion-select-option value="fr">French</ion-select-option>
+    </ion-select>
+
+    <!-- <p class="personal_text">Personal</p> -->
+
+    <div class="card" (click)="profilePage()">
+      <p class="profile_text NunitoSans">Profile</p>
+      <ion-icon class="forward_icon" name="chevron-forward"></ion-icon>
+    </div>
+
+    <div class="card1" (click)="termsAndConditionsPage()">
+      <p class="profile_text NunitoSans">Terms and Conditions</p>
+      <ion-icon class="forward_icon" name="chevron-forward"></ion-icon>
+    </div>
+
+    <div class="card1" (click)="privacyPolicyPage()">
+      <p class="profile_text NunitoSans">Privacy Policy</p>
+      <ion-icon class="forward_icon" name="chevron-forward"></ion-icon>
+    </div>
+
+    <div class="card1" (click)="logOut()">
+      <p class="profile_text NunitoSans">Log out</p>
+      <ion-icon class="forward_icon" name="chevron-forward"></ion-icon>
+    </div>
+
+    <div class="card1" (click)="deleteAccount()">
+      <p class="profile_text NunitoSans">Delete Account</p>
+      <ion-icon class="forward_icon" name="chevron-forward"></ion-icon>
+    </div>
+  </div>
+</ion-content>
+
+<ion-alert isOpen={{openalert}} class="custom-alert" header="Are you sure you want to log out ?"
+  [buttons]="alertButtons" (didDismiss)="openalert=false" mode="ios"></ion-alert>
+
+<ion-alert isOpen={{deleteAccountpopup}} class="custom-alert" header="Do you want to delete your account permanently?"
+  (didDismiss)="deleteAccountpopup=false" [buttons]="alertButtonss" mode="ios"></ion-alert>

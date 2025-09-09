@@ -1,0 +1,38 @@
+<ion-content class="mainBackground">
+  <div style="padding: 20px;" class="h_100">
+    <div class="main_div">
+      <div class="welcome_div">
+        <p class="welcome_text PPNeueMontreal">Welcome</p>
+        <p class="signUpDetails_text PPNeueMontreal">Please enter your sign in details.</p>
+      </div>
+
+      <div class="center">
+        <img class="bg_img" src="../../../assets/images/bgImg.png" />
+      </div>
+
+      <form class="w_100" #signinForm="ngForm">
+        <ion-input class="email" type="email" label="Email" label-placement="floating" fill="outline"
+          placeholder="Enter email" name="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          [(ngModel)]="signinModel.email" #email="ngModel" required></ion-input>
+        <p class="validField" *ngIf="submitted && email?.errors?.['required']">Email is required.</p>
+        <p class="validField" *ngIf="submitted && email?.errors?.['pattern']">Invalid your email</p>
+
+        <ion-input class="password" type="password" label="Password" label-placement="floating" fill="outline"
+          placeholder="**************" name="password" [(ngModel)]="signinModel.password" #password="ngModel"
+          required></ion-input>
+        <p class="validField" *ngIf="submitted && password?.errors?.['required']">Password is required.</p>
+
+        <p class="signUp_text">By clicking Sign up, you agree with our <span class="f_700"
+            (click)="termsAndConditionsPage()">Terms and Conditions </span>and <span class="f_700"
+            (click)="privacyPolicyPage()">Privacy Policy</span></p>
+
+        <ion-button class="signIn_btn" (click)="login(signinForm)">Sign in</ion-button>
+
+        <p class="account_text Poppins">Didn’t have any account? <span class="f_700" (click)="signUpPage()">Sign
+            up</span></p>
+
+        <p class="forgetPassword PPNeueMontreal" (click)="forgetPasswordPage()">Forget Password ?</p>
+      </form>
+    </div>
+  </div>
+</ion-content>

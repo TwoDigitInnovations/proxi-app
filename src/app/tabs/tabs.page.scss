@@ -1,1 +1,32 @@
+ion-tab-bar {
+    --background: #F05023;
+    height: 72px;
+    border-radius: 20px 20px 0px 0px;
+}
 
+.tabsSelected {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    font-size: 20px;
+}
+
+.tabsSelected_name {
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+    margin: 10px 0px 0px 0px;
+}
+
+.tabsSelected_name1 {
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    color: #FFEEDA;
+    margin: 10px 0px 0px 0px;
+}
