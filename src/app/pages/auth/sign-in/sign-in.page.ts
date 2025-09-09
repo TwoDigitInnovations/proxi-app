@@ -47,7 +47,13 @@ export class SignInPage implements OnInit {
         this.common.presentToaster('You are successfully logged in')
         localStorage.setItem('token', res.token)
         localStorage.setItem('userDetail', JSON.stringify(res.user))
-        this.navCtrl.navigateRoot(['/tabs/home'])
+        if (res.user.role === 'user') {
+          this.navCtrl.navigateRoot(['/tabs/home'])
+        }
+        if (res.user.role === 'provider') {
+          this.navCtrl.navigateRoot(['/tabs/home-provider'])
+        }
+
         this.signinModel = {
           email: '',
           password: '',

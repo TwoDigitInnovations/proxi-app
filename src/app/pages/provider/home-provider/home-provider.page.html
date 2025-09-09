@@ -1,0 +1,90 @@
+<ion-header>
+  <div class="mainHeader">
+    <div class="mainUser_div">
+      <img class="user_img" src="../../../../assets/images/image-4.png" />
+      <div>
+        <p class="helloMike_text">Hello Mike</p>
+        <p class="haveGoodDay_text">Have a good day!</p>
+      </div>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content class="mainBackground">
+  <div style="padding: 20px;">
+    <div class="mainDoctor_input">
+      <img class="mapImg" src="../../../../assets/images/map.png" />
+      <input class="doctor_input SFProText" type="search" placeholder="Doctor" />
+    </div>
+
+    <div class="w_100">
+      <div class="nextAppointments_div">
+        <p class="nextAppointments_text">Next Appointments</p>
+        <p class="seeAll_text">See all</p>
+      </div>
+      <div class="mainCard">
+        <div class="w_100" *ngFor="let item of [1,2,3,4,5]">
+          <div class="nextAppointments_card">
+            <div class="nextAppointmentscard_div">
+              <img class="user_img1" src="../../../../assets/images/image-5.png" />
+              <div>
+                <p class="rachel_text">Rachel</p>
+                <p class="time_text">9:00 am</p>
+              </div>
+            </div>
+            <p class="appointment_text">Appointment with Jane Smith Today</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="w_100">
+      <div class="nextAppointments_div">
+        <p class="nextAppointments_text">Visitors Status</p>
+        <p class="seeAll_text">Change Status</p>
+      </div>
+
+      <div class="visitorsStatus_card">
+        <div class="scheduled_div">
+          <p class="number_text">78</p>
+          <p class="scheduled_text">Scheduled</p>
+        </div>
+
+        <div class="border_div"></div>
+
+        <div class="scheduled_div">
+          <p class="number_text">13</p>
+          <p class="scheduled_text">Completed</p>
+        </div>
+
+        <div class="border_div"></div>
+
+        <div class="scheduled_div">
+          <p class="number_text">44</p>
+          <p class="scheduled_text">Remaining</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="w_100">
+      <div class="nextAppointments_div">
+        <p class="nextAppointments_text">Appointments</p>
+        <p class="seeAll_text">See all</p>
+      </div>
+
+      <div class="appointments_card">
+        <div class="appointmentsCard_div" *ngFor="let item of [1,2,3,4,5]">
+          <div class="travisTanner_div">
+            <img class="appointmentsUser_img" src="../../../../assets/images/image-6.png" />
+            <div>
+              <p class="travisTanner_text">Travis Tanner</p>
+              <p class="businessMeeting_text">Business meeting</p>
+            </div>
+          </div>
+          <ion-button class="seeDetails_btn">See Details</ion-button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ion-content>
