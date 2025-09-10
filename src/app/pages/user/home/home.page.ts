@@ -3,6 +3,7 @@ import { GoogleMap } from '@capacitor/google-maps';
 import { NavController } from '@ionic/angular';
 import { CommonService } from 'src/app/common.service';
 import { ServiceService } from 'src/app/service.service';
+import { environment } from 'src/environments/environment.prod';
 declare var google: any;
 
 @Component({
@@ -70,21 +71,20 @@ export class HomePage implements OnInit {
   ngOnInit() {
   }
 
-  async ngAfterViewInit() {
-    setTimeout(async () => {
-      await this.loandMap();
-    }, 1000);
+  // async ngAfterViewInit() {
+  //   setTimeout(async () => {
+  //     await this.loandMap();
+  //   }, 1000);
 
-  }
+  // }
 
   async loandMap() {
     console.log('AAA', this.mapRef?.nativeElement)
     if (this.mapRef?.nativeElement) {
-      const apiKey: any = 'AIzaSyAobHm_nObzJpa_5fBCPhQ9036XI-87g5w';
       this.map = await GoogleMap.create({
         id: 'my-map', // Unique identifier
         element: this.mapRef.nativeElement,
-        apiKey: apiKey,
+        apiKey: environment.mapkey,
         config: {
           center: {
             lat: 37.7749, // San Francisco
