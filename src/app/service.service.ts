@@ -64,6 +64,11 @@ export class ServiceService {
     return this.common.post(url, data);
   }
 
+  getCategory() {
+    const url = `category/getCategory`;
+    return this.common.get(url,);
+  }
+
   // getProperty(data?: any) {
   //   let d = new HttpParams();
   //   if (data) {

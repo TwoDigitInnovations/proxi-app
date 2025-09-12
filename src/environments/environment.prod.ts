@@ -3,5 +3,5 @@ export const environment = {
   url: "https://proxyapp-backend.onrender.com/",
   // url: 'http://localhost:3000/'
 
-  mapkey: 'AIzaSyAobHm_nObzJpa_5fBCPhQ9036XI-87g5w'
+  mapkey: 'AIzaSyA4GB0zYGkYF8blPqwF57GKnw4ON2EEN80'
 };

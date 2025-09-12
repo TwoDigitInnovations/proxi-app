@@ -59,6 +59,8 @@ export class HomePage implements OnInit {
     },
   ];
 
+  categoryData: any = [];
+
   constructor(
     private navCtrl: NavController,
     private common: CommonService,
@@ -72,6 +74,8 @@ export class HomePage implements OnInit {
   }
 
   ionViewWillEnter() {
+    this.getCategory();
+
     setTimeout(async () => {
       await this.loandMap();
     }, 1000);
@@ -132,6 +136,24 @@ export class HomePage implements OnInit {
       };
       console.log(this.location)
     })
+  }
+
+  getCategory() {
+    this.common.showLoading();
+    this.service.getCategory().subscribe(
+      (res: any) => {
+        this.common.hideLoading();
+        if (res.status) {
+          console.log(res);
+          this.categoryData = res.data;
+        }
+      },
+      (err) => {
+        this.common.hideLoading();
+        console.log(err);
+        this.common.presentToaster(err?.error?.message);
+      }
+    );
   }
 
   payAmount(payAmountForm: any) {

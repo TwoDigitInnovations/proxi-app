@@ -22,14 +22,15 @@
     </div>
 
     <div class="mainBanks_div">
-      <div class="w_100" (click)="loandMap()">
+      <div class="w_100" *ngFor="let item of categoryData">
+        <!-- (click)="loandMap()" -->
         <div class="banks_div">
-          <img class="banks_icon" src="../../../../assets/images/banksIcon.png" />
-          <p class="banks_text SFProText">Banks</p>
+          <img class="banks_icon" [src]="item?.image" />
+          <p class="banks_text SFProText">{{item?.name}}</p>
         </div>
       </div>
 
-      <div class="w_100">
+      <!-- <div class="w_100">
         <div class="hospitals_div">
           <img class="banks_icon" src="../../../../assets/images/hospitalsIcon.png" />
           <p class="banks_text SFProText">Hospitals</p>
@@ -41,7 +42,7 @@
           <img class="banks_icon" src="../../../../assets/images/telecommunicationOfficesIcon.png" />
           <p class="banks_text SFProText">Telecommunication Offices</p>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 
