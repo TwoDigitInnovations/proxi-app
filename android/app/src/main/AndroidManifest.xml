@@ -10,7 +10,6 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
-            <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAobHm_nObzJpa_5fBCPhQ9036XI-87g5w"/>
         <activity
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode|navigation"
             android:name=".MainActivity"
@@ -36,6 +35,9 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"></meta-data>
         </provider>
+
+      <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAobHm_nObzJpa_5fBCPhQ9036XI-87g5w"/>
+
     </application>
 
     <!-- Permissions -->
