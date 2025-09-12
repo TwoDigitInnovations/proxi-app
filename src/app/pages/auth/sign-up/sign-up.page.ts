@@ -31,11 +31,11 @@ export class SignUpPage implements OnInit {
   }
 
   termsAndConditionsPage() {
-    this.navCtrl.navigateForward(['/tabs/terms-and-conditions'])
+    this.navCtrl.navigateForward(['/terms-and-conditions'])
   }
 
   privacyPolicyPage() {
-    this.navCtrl.navigateForward(['/tabs/privacy-policy'])
+    this.navCtrl.navigateForward(['/privacy-policy'])
   }
 
   signInPage() {

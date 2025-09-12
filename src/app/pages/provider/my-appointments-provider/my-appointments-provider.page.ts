@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   standalone: false,
@@ -8,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyAppointmentsProviderPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private navCtrl: NavController,
+  ) { }
 
   ngOnInit() {
   }
 
+  appointmentsDetails() {
+    this.navCtrl.navigateForward(['/tabs/my-appointments-details-provider'])
+  }
 }

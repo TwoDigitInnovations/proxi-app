@@ -1,0 +1,102 @@
+ion-header {
+    background: white;
+    height: 65px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.header-md {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.mainHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.back_icon {
+    height: 20px;
+    width: 20px;
+    color: #363636;
+}
+
+.mainTitle_text {
+    font-size: 20px;
+    font-weight: 700;
+    color: #363636;
+    margin: 0px;
+    padding-left: 10px;
+}
+
+.mainBackground {
+    --background: white;
+    height: 100%;
+    width: 100%;
+}
+
+.appointmentsDetails_img {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+}
+
+.appointmentsDetails_card {
+    background: white;
+    width: 100%;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 9.3px 0px #36363640;
+    margin: 20px 0px 20px 0px;
+}
+
+.name_div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.name_text {
+    font-weight: 600;
+    font-size: 14px;
+    color: #363636;
+    margin: 0px;
+}
+
+.louisLitt_text {
+    font-weight: 500;
+    font-size: 14px;
+    color: #363636;
+    margin: 0px;
+}
+
+.phoneNo_div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.next_btn {
+    --border-radius: 10px;
+    --background: #FF5207;
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 100%;
+    margin: 0px;
+    height: 50px;
+    text-transform: none;
+    --box-shadow: 0px 5px 20px 10px #2048BD33;
+}

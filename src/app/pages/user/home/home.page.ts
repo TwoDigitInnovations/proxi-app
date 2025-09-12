@@ -70,12 +70,17 @@ export class HomePage implements OnInit {
   ngOnInit() {
   }
 
-  async ngAfterViewInit() {
+  ionViewWillEnter() {
     setTimeout(async () => {
       await this.loandMap();
     }, 1000);
-
   }
+
+  // async ngAfterViewInit() {
+  //   setTimeout(async () => {
+  //     await this.loandMap();
+  //   }, 1000);
+  // }
 
   async loandMap() {
     console.log('AAA', this.mapRef?.nativeElement)

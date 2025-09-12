@@ -54,7 +54,6 @@ export class SettingsPage implements OnInit {
       this.userDetail = JSON.parse(userDetail)
     }
     console.log(userDetail)
-
   }
 
   handleChange(lang: any) {
@@ -69,11 +68,11 @@ export class SettingsPage implements OnInit {
   }
 
   termsAndConditionsPage() {
-    this.navCtrl.navigateForward(['/tabs/terms-and-conditions'])
+    this.navCtrl.navigateForward(['/terms-and-conditions'])
   }
 
   privacyPolicyPage() {
-    this.navCtrl.navigateForward(['/tabs/privacy-policy'])
+    this.navCtrl.navigateForward(['/privacy-policy'])
   }
 
   logOut() {

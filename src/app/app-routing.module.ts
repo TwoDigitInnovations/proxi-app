@@ -49,24 +49,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/user/profile/profile.module').then(m => m.ProfilePageModule)
   },
   {
-    path: 'profile',
-    loadChildren: () => import('./pages/provider/profile/profile.module').then(m => m.ProfilePageModule)
-  },
-  {
     path: 'terms-and-conditions',
     loadChildren: () => import('./pages/user/terms-and-conditions/terms-and-conditions.module').then(m => m.TermsAndConditionsPageModule)
   },
   {
     path: 'privacy-policy',
     loadChildren: () => import('./pages/user/privacy-policy/privacy-policy.module').then(m => m.PrivacyPolicyPageModule)
-  },
-  {
-    path: 'terms-and-conditions',
-    loadChildren: () => import('./pages/provider/terms-and-conditions/terms-and-conditions.module').then(m => m.TermsAndConditionsPageModule)
-  },
-  {
-    path: 'privacy-policy',
-    loadChildren: () => import('./pages/provider/privacy-policy/privacy-policy.module').then(m => m.PrivacyPolicyPageModule)
   },
   {
     path: 'my-appointments-details',
@@ -99,6 +87,14 @@ const routes: Routes = [
   {
     path: 'service-provider',
     loadChildren: () => import('./pages/provider/service-provider/service-provider.module').then(m => m.ServiceProviderPageModule)
+  },
+  {
+    path: 'my-appointments-details-provider',
+    loadChildren: () => import('./pages/provider/my-appointments-details-provider/my-appointments-details-provider.module').then(m => m.MyAppointmentsDetailsProviderPageModule)
+  },
+  {
+    path: 'profile-provider',
+    loadChildren: () => import('./pages/provider/profile-provider/profile-provider.module').then(m => m.ProfileProviderPageModule)
   },
 ];
 @NgModule({

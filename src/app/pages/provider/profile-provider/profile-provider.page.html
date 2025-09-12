@@ -4,7 +4,6 @@
       <ion-icon class="back_icon" (click)="goBack()" name="chevron-back-outline"></ion-icon>
       <p class="mainTitle_text PPNeueMontreal">Profile</p>
     </div>
-    <!-- <img class="user_icon" src="../../../../assets/images/userIcon.png" /> -->
     <div class="editIcon_div1" *ngIf="!isEdit" (click)="isEdit= true">
       <img class="editImg1" src="../../../../assets/images/editImg.png" />
     </div>
@@ -44,6 +43,29 @@
         <ion-input [readonly]="!isEdit" class="email_input Raleway" type="Number" placeholder="Phone Number"
           name="phoneNumber" [(ngModel)]="profileModel.phoneNumber" #phoneNumber="ngModel" required></ion-input>
         <p class="validField" *ngIf="submitted && phoneNumber?.errors?.['required']">Phone Number is required.</p>
+      </div>
+
+
+      <div class="ownername_div">
+        <p class="uploadedDocument_text">Uploaded Document</p>
+        <ion-grid class="pad_0">
+          <ion-row>
+            <ion-col size="6" class="center openImg_div" style=" position:relative;"
+              *ngFor="let item of profileModel.document">
+              <ion-icon name="close-circle" class="closeCircle_icon" (click)="removeImage(item)"
+                *ngIf="isEdit"></ion-icon>
+              <img class="profile_img1" [src]="item?.base64Data || item?.imageUrl" />
+            </ion-col>
+            <ion-col size="6" class="openImg_div" *ngIf="isEdit">
+              <div class="center flex_col">
+                <div class="editIcon_div2" (click)="takeMultiPicture()">
+                  <ion-icon class="editIcon" name="add-outline"></ion-icon>
+                </div>
+                <p class="uploadImage_text">Upload Image</p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </div>
 
       <ion-button class="signIn_btn NunitoSans" *ngIf="isEdit" (click)="updateProfile(profileForm)">Save

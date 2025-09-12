@@ -235,21 +235,22 @@ ion-header {
 .seeDetails_btn {
     --background: #33D250;
     width: 85px;
-    height: 26px;
-    // border: 1px solid #363636;
-    --border-radius: 5px;
+    min-height: 29px;
+    border: 2px solid #363636;
+    border-radius: 5px;
     font-size: 10px;
     font-weight: 600;
     color: white;
     text-transform: capitalize;
     margin: 0px;
+    --box-shadow: none !important;
 
-    ion-button {
-        &::part(native) {
-            --border: 1px solid #363636;
-            --border-radius: 5px;
-        }
-    }
+    // ion-button {
+    //     &::part(native) {
+    //         --border: 2px solid #363636;
+    //         --border-radius: 5px;
+    //     }
+    // }
 }
 
 .appointmentsCard_div {

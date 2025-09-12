@@ -36,24 +36,23 @@ export class CommonService {
   private handleError(error: HttpErrorResponse) {
     console.log(error)
     console.log(error.status)
-    if (error.status === 401) {
+    if (error.status === 401 && error.message === 'jwt expired') {
       console.log(error.status)
       this.presentToaster('Login required')
       this.logout()
       console.error('An error occurred:', error.error);
       console.log(error)
-      // error.error.message = 'Login required'
+      error.error.message = 'Login required'
     }
-    if (error.status === 409) {
+    // if (error.status === 409) {
 
-    }
+    // }
 
     return throwError(() => error);
   }
 
   logout() {
     localStorage.removeItem('userDetail')
-    localStorage.removeItem('userDetails')
     localStorage.removeItem('token')
     this.navCtrl.navigateRoot(['/sign-in'])
   }
