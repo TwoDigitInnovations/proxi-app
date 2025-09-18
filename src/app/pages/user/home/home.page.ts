@@ -5,6 +5,9 @@ import { CommonService } from 'src/app/common.service';
 import { ServiceService } from 'src/app/service.service';
 import { environment } from 'src/environments/environment.prod';
 declare var google: any;
+import { Geolocation } from '@capacitor/geolocation';
+import { Capacitor } from '@capacitor/core';
+import * as moment from 'moment';
 
 @Component({
   standalone: false,
@@ -61,6 +64,18 @@ export class HomePage implements OnInit {
 
   categoryData: any = [];
 
+  dateList = [
+    moment(new Date()).format('DD/MM/YYYY'),
+    moment(new Date(new Date().setDate(new Date().getDate() + 1))).format('DD/MM/YYYY'),
+    moment(new Date(new Date().setDate(new Date().getDate() + 2))).format('DD/MM/YYYY'),
+    moment(new Date(new Date().setDate(new Date().getDate() + 3))).format('DD/MM/YYYY'),
+  ]
+  moment: any = moment;
+  selectedDate: any = moment(new Date()).format('DD/MM/YYYY');
+  nearMeServicebyCategoryData: any = [];
+  selectedService: any = {}
+  selectedTime: any;
+
   constructor(
     private navCtrl: NavController,
     private common: CommonService,
@@ -74,11 +89,23 @@ export class HomePage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.getCategory();
 
-    setTimeout(async () => {
-      await this.loandMap();
-    }, 1000);
+    // this.requestAndGet();
+    const d = this.getLocation().then((res) => {
+      console.log(res)
+      this.location = res;
+      console.log(this.location);
+      if (this.location) {
+        setTimeout(async () => {
+          await this.loandMap(this.location);
+        }, 1000);
+      }
+    });
+    console.log(d)
+
+    // setTimeout(async () => {
+    //   await this.loandMap();
+    // }, 1000);
   }
 
   // async ngAfterViewInit() {
@@ -87,7 +114,51 @@ export class HomePage implements OnInit {
   //   }, 1000);
   // }
 
-  async loandMap() {
+  async requestAndGet() {
+    try {
+      await Geolocation.requestPermissions(); // prompts the user on device
+
+      const position = await Geolocation.getCurrentPosition();
+      console.log('Latitude:', position.coords.latitude);
+      console.log('Longitude:', position.coords.longitude);
+      return position;
+    } catch (err) {
+      console.error('Geolocation error:', err);
+      throw err;
+    }
+  }
+
+  async getLocation() {
+
+    console.log(Capacitor.getPlatform())
+    console.log(Geolocation)
+    try {
+      if (Capacitor.getPlatform() === 'web') {
+        console.log(Capacitor.getPlatform())
+        // fallback to browser geolocation
+        return new Promise<GeolocationPosition>((resolve, reject) => {
+          if (!('geolocation' in navigator)) {
+            reject(new Error('Geolocation not supported in this browser'));
+          }
+          navigator.geolocation.getCurrentPosition(resolve, reject, {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 0,
+          });
+        });
+      } else {
+        // iOS / Android (Capacitor)
+        await Geolocation.requestPermissions();
+        return Geolocation.getCurrentPosition({ enableHighAccuracy: true });
+      }
+    } catch (err) {
+      console.error('Location error:', err);
+      throw err;
+    }
+  }
+
+  async loandMap(locationLatAndLng: any) {
+    console.log(locationLatAndLng)
     console.log('AAA', this.mapRef?.nativeElement)
     if (this.mapRef?.nativeElement) {
       this.map = await GoogleMap.create({
@@ -96,15 +167,32 @@ export class HomePage implements OnInit {
         apiKey: environment.mapkey,
         config: {
           center: {
-            lat: 37.7749, // San Francisco
-            lng: -122.4194,
+            lat: locationLatAndLng.coords.latitude, // San Francisco
+            lng: locationLatAndLng.coords.longitude,
             // lat: this.location.lat,
             // lng: this.location.lng,
           },
           zoom: 12,
         },
       });
+
+      await this.map.addMarker({
+        coordinate: {
+          lat: locationLatAndLng.coords.latitude, // San Francisco
+          lng: locationLatAndLng.coords.longitude,
+        }
+      });
+
+      await this.map.setOnMarkerClickListener((event: any) => {
+        console.log(event);
+        this.isAlertOpen = true;
+        this.selectedService = this.nearMeServicebyCategoryData[Number(event.markerId) - 1]
+        console.log(this.selectedService)
+        this.selectedTime = this.selectedService?.service_slot[0];
+      });
     }
+
+    this.getCategory();
   }
 
   UpdateSearchResults(e: any) {
@@ -144,8 +232,9 @@ export class HomePage implements OnInit {
       (res: any) => {
         this.common.hideLoading();
         if (res.status) {
-          console.log(res);
+          console.log(res?.data[0]._id);
           this.categoryData = res.data;
+          this.nearMeServicebyCategory(res?.data[0]._id);
         }
       },
       (err) => {
@@ -156,12 +245,70 @@ export class HomePage implements OnInit {
     );
   }
 
+  nearMeServicebyCategory(categoryId: any) {
+    const data = {
+      category: categoryId,
+      location: [
+        this.location.coords.longitude,
+        this.location.coords.latitude
+      ],
+    }
+    this.common.showLoading();
+    this.service.nearMeServicebyCategory(data).subscribe(
+      async (res: any) => {
+        this.common.hideLoading();
+        console.log(res);
+        if (res?.status) {
+          // this.submitted = false;
+          this.nearMeServicebyCategoryData = res.data;
+          console.log(this.nearMeServicebyCategoryData);
+          res.data.forEach(async (element: any) => {
+            await this.map.addMarker({
+              coordinate: {
+                lat: element.service_location.coordinates[1],
+                lng: element.service_location.coordinates[0]
+              },
+            });
+          });
+
+          // await this.mapRef.enableClustering();
+
+        }
+      },
+      (err) => {
+        this.common.hideLoading();
+        console.log(err);
+        this.common.presentToaster(err?.error?.message);
+      }
+    );
+  }
+
+  bookAppointment() {
+    this.isAlertOpen = false;
+    this.timeSlotOpen = true;
+  }
+
+  selectedData(type: any) {
+    console.log(type)
+    this.selectedDate = type;
+  }
+
+  selectedTimeData(type: any) {
+    console.log(type)
+    this.selectedTime = type;
+  }
+
+  confirmAppointment() {
+    this.timeSlotOpen = false;
+    this.payAmountOpen = true;
+  }
+
   payAmount(payAmountForm: any) {
-    this.payAmountOpen = false;
-    setTimeout(() => {
-      this.navCtrl.navigateForward(['/payment-success'])
-    }, 1000);
-    return
+    // this.payAmountOpen = false;
+    // setTimeout(() => {
+    //   this.navCtrl.navigateForward(['/payment-success'])
+    // }, 1000);
+    // return
     if (payAmountForm.form.invalid) {
       this.submitted = true;
       return

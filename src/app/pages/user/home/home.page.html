@@ -1,9 +1,3 @@
-<!-- <ion-header>
-  <ion-toolbar>
-    <ion-title>home</ion-title>
-  </ion-toolbar>
-</ion-header> -->
-
 <ion-content class="mainBackground">
 
   <capacitor-google-map #map></capacitor-google-map>
@@ -22,260 +16,187 @@
     </div>
 
     <div class="mainBanks_div">
-      <div class="w_100" *ngFor="let item of categoryData">
+      <div class="w_100" *ngFor="let item of categoryData" (click)="nearMeServicebyCategory(item._id)">
         <!-- (click)="loandMap()" -->
         <div class="banks_div">
           <img class="banks_icon" [src]="item?.image" />
           <p class="banks_text SFProText">{{item?.name}}</p>
         </div>
       </div>
-
-      <!-- <div class="w_100">
-        <div class="hospitals_div">
-          <img class="banks_icon" src="../../../../assets/images/hospitalsIcon.png" />
-          <p class="banks_text SFProText">Hospitals</p>
-        </div>
-      </div>
-
-      <div class="w_100">
-        <div class="telecommunicationOffices_div">
-          <img class="banks_icon" src="../../../../assets/images/telecommunicationOfficesIcon.png" />
-          <p class="banks_text SFProText">Telecommunication Offices</p>
-        </div>
-      </div> -->
     </div>
   </div>
 
-  <!-- <ion-button id="open-action-sheet">Open</ion-button>
-    <ion-action-sheet trigger="open-action-sheet" header="Actions" [buttons]="actionSheetButtons"></ion-action-sheet> -->
-
-  <!-- <div class="mainDirections_div">
-    <div style="padding: 20px;">
-      <p class="tastylicious_text SFProText">Tastylicious Food and company</p>
-
-      <div class="reviews_div">
-        <p class="ratedByUsers_text SFProText">4.2</p>
-        <star-rating [starType]="'svg'" [readOnly]="true" [rating]="rating" name="rating"
-          [showHalfStars]="true"></star-rating>
-        <p class="ratedByUsers_text SFProText">( 175 )</p>
-        <star-rating [starType]="'svg'" [showHalfStars]="true" [rating]="2.63"></star-rating>
-      </div>
-
-      <div class="mainBtn_div">
-        <ion-button class="directions_btn SFProText"><img class="directions_img"
-            src="../../../../assets/images/directionsImg.png" />Directions</ion-button>
-        <ion-button class="bookAppointment_btn SFProText"><img class="bookAppointment_img"
-            src="../../../../assets/images/bookAppointmentImg.png" />Book Appointment</ion-button>
-      </div>
-
-      <div class="directionsImage_div">
-        <img class="directions_image" src="../../../../assets/images/image.png" />
-        <img class="directions_image1" src="../../../../assets/images/image-1.png" />
-        <img class="directions_image" src="../../../../assets/images/image.png" />
-      </div>
-    </div>
-
-    <div style="padding: 0px 0px 10px 0px;">
-      <p class="overview_text SFProText">Overview</p>
-      <p class="loremIpsum_text SFProText">Lorem ipsum dolor sit amet consectetur. Vehicula eget posuere faucibus
-        ultrices
-        sit phasellus. Aliquam penatibus commodo ut volutpat pretium.</p>
-      <div class="mainAlarm_div">
-        <img src="../../../../assets/images/alarmImg.png" />
-        <div>
-          <p class="min_text SFProText">50 min</p>
-          <p class="min_text1 SFProText">(Average Time for your turn)</p>
-        </div>
-      </div>
-      <div class="mainCrowdDetection_div">
-        <p class="crowdDetection_text SFProText">Crowd Detection</p>
-        <div class="high_div">
-          <p class="rounded_text"></p>
-          <p class="high_text SFProText">High</p>
-        </div>
-      </div>
-      <div class="mainCrowdAvailable_div">
-        <p class="crowdAvailable_text SFProText">Crowd Available</p>
-        <p class="crowdAvailable_text1 SFProText">80</p>
-      </div>
-    </div>
-  </div> -->
-
-
-  <ion-modal [isOpen]="isAlertOpen" (didDismiss)="isAlertOpen=false" #modal trigger="open-modal"
-    [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+  <ion-modal [isOpen]="isAlertOpen" (didDismiss)="isAlertOpen=false" cssClass="calendar">
     <ng-template>
-      <ion-content>
-        <!-- class="ion-padding" -->
-        <div class="mainDirections_div">
-          <div style="padding: 20px;">
-            <p class="tastylicious_text SFProText">Tastylicious Food and company</p>
-
-            <div class="reviews_div">
-              <p class="ratedByUsers_text SFProText">4.2</p>
-              <star-rating [starType]="'svg'" [readOnly]="true" [rating]="rating" name="rating"
-                [showHalfStars]="true"></star-rating>
-              <p class="ratedByUsers_text SFProText">( 175 )</p>
-            </div>
-
-            <div class="mainBtn_div">
-              <ion-button class="directions_btn SFProText"><img class="directions_img"
-                  src="../../../../assets/images/directionsImg.png" />Directions</ion-button>
-              <ion-button class="bookAppointment_btn SFProText"><img class="bookAppointment_img"
-                  src="../../../../assets/images/bookAppointmentImg.png" />Book
-                Appointment</ion-button>
-            </div>
-
-            <div class="directionsImage_div">
-              <img class="directions_image" src="../../../../assets/images/image.png" />
-              <img class="directions_image1" src="../../../../assets/images/image-1.png" />
-              <img class="directions_image" src="../../../../assets/images/image.png" />
-            </div>
-          </div>
-
-          <div style="padding: 0px 0px 10px 0px;">
-            <p class="overview_text SFProText">Overview</p>
-            <p class="loremIpsum_text SFProText">Lorem ipsum dolor sit amet consectetur. Vehicula eget posuere faucibus
-              ultrices
-              sit phasellus. Aliquam penatibus commodo ut volutpat pretium.</p>
-            <div class="mainAlarm_div">
-              <img src="../../../../assets/images/alarmImg.png" />
-              <div>
-                <p class="min_text SFProText">50 min</p>
-                <p class="min_text1 SFProText">(Average Time for your turn)</p>
-              </div>
-            </div>
-            <div class="mainCrowdDetection_div">
-              <p class="crowdDetection_text SFProText">Crowd Detection</p>
-              <div class="high_div">
-                <p class="rounded_text"></p>
-                <p class="high_text SFProText">High</p>
-              </div>
-            </div>
-            <div class="mainCrowdAvailable_div">
-              <p class="crowdAvailable_text SFProText">Crowd Available</p>
-              <p class="crowdAvailable_text1 SFProText">80</p>
-            </div>
-          </div>
-        </div>
-      </ion-content>
-    </ng-template>
-  </ion-modal>
-
-  <ion-modal [isOpen]="timeSlotOpen" (didDismiss)="timeSlotOpen=false" #modal trigger="open-modal"
-    [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]">
-    <ng-template>
-      <ion-content>
-        <div class="mainDirections_div">
-          <div style="padding: 20px;">
-            <p class="tastylicious_text SFProText">Tastylicious Food and company</p>
-            <p class="appointment_text Poppins">Appointment</p>
-            <div class="timeSlotCard">
-              <ion-grig>
-                <ion-row>
-                  <ion-col class="pad_0" size="3">
-                    <div class="timeSlot_div">
-                      <p class="sunday_text Poppins">Sun</p>
-                      <p class="sunday_text1 Poppins">3</p>
-                    </div>
-                  </ion-col>
-                  <ion-col class="pad_0" size="3">
-                    <div class="timeSlot_div">
-                      <p class="sunday_text Poppins">Mon</p>
-                      <p class="sunday_text1 Poppins">4</p>
-                    </div>
-                  </ion-col>
-                  <ion-col class="pad_0" size="3">
-                    <div class="timeSlot_div1">
-                      <p class="sunday_text2 Poppins">Tue</p>
-                      <p class="sunday_text3 Poppins">5</p>
-                    </div>
-                  </ion-col>
-                  <ion-col class="pad_0" size="3">
-                    <div class="timeSlot_div">
-                      <p class="sunday_text Poppins">Wed</p>
-                      <p class="sunday_text1 Poppins">6</p>
-                    </div>
-                  </ion-col>
-                </ion-row>
-              </ion-grig>
-            </div>
-            <p class="availableTime_text Poppins">Available Time</p>
-            <ion-grig>
-              <ion-row>
-                <ion-col class="pad_0" size="3">
-                  <p class="availableTimeSlot Poppins">9:00 AM</p>
-                </ion-col>
-                <ion-col class="pad_0" size="3">
-                  <p class="availableTimeSlot1 Poppins">9:30 AM</p>
-                </ion-col>
-                <ion-col class="pad_0" size="3">
-                  <p class="availableTimeSlot1 Poppins">10:00 AM</p>
-                </ion-col>
-                <ion-col class="pad_0" size="3">
-                  <p class="availableTimeSlot1 Poppins">10:30 AM</p>
-                </ion-col>
-              </ion-row>
-            </ion-grig>
-
-            <ion-button class="confirm_btn">Confirm</ion-button>
-          </div>
-        </div>
-      </ion-content>
-    </ng-template>
-  </ion-modal>
-
-  <ion-modal [isOpen]="payAmountOpen" (didDismiss)="payAmountOpen=false" #modal trigger="open-modal"
-    [initialBreakpoint]="0.25" [breakpoints]="[0, 0.25, 0.5, 0.75]">
-    <ng-template>
-      <ion-content>
-        <div class="mainDirections_div">
-          <div style="padding: 20px;">
-            <p class="tastylicious_text SFProText">Tastylicious Food and company</p>
-
-            <form class="w_100" #payAmountForm="ngForm">
-              <ion-input class="name" type="text" label="Name" label-placement="floating" fill="outline"
-                placeholder="Enter Name" name="fullName" [(ngModel)]="payAmountModel.fullName" #fullName="ngModel"
-                required></ion-input>
-              <p class="validField" *ngIf="submitted && fullName?.errors?.['required']">Name is required.</p>
-
-              <ion-input class="password" type="email" label="Email" label-placement="floating" fill="outline"
-                placeholder="Enter email" name="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                [(ngModel)]="payAmountModel.email" #email="ngModel" required></ion-input>
-              <p class="validField" *ngIf="submitted && email?.errors?.['required']">Email is required.</p>
-
-              <p class="validField" *ngIf="submitted && email?.errors?.['pattern']">Invalid your email</p>
-
-              <ion-input class="password" type="number" label="Mobile Number" label-placement="floating" fill="outline"
-                placeholder="Enter Mobile Number" name="phoneNumber" [(ngModel)]="payAmountModel.phoneNumber"
-                #phoneNumber="ngModel" required></ion-input>
-              <p class="validField" *ngIf="submitted && phoneNumber?.errors?.['required']">Mobile Number is required.
-              </p>
-
-              <div class="w_100">
-                <div class="selectCountry_div">
-                  <ion-select class="selectCountry" name="gender" [(ngModel)]="payAmountModel.gender" #gender="ngModel"
-                    required>
-                    <ion-select-option class="w_100" value="">Gender</ion-select-option>
-                    <ion-select-option class="w_100" value="yes">Male</ion-select-option>
-                    <ion-select-option class="w_100" value="no">Female</ion-select-option>
-                  </ion-select>
+      <ion-content class="content" style="--background: white !important;">
+        <div class="h_100 w_100 end">
+          <div class="mainIonContent_div">
+            <div class="mainDirections_div">
+              <div style="padding: 20px;">
+                <div class="mainTastyliciousFood_div">
+                  <p class="tastylicious_text SFProText">Tastylicious Food and company</p>
+                  <ion-icon class="close_icon" name="close-circle-outline" (click)="isAlertOpen=false"></ion-icon>
                 </div>
-                <p class="validField" *ngIf="submitted && gender?.errors?.['required']">
-                  Gender is required.
-                </p>
+
+                <div class="reviews_div">
+                  <p class="ratedByUsers_text SFProText">4.2</p>
+                  <star-rating [starType]="'svg'" [readOnly]="true" [rating]="rating" name="rating"
+                    [showHalfStars]="true"></star-rating>
+                  <p class="ratedByUsers_text SFProText">( 175 )</p>
+                </div>
+
+                <div class="mainBtn_div">
+                  <ion-button class="directions_btn SFProText"><img class="directions_img"
+                      src="../../../../assets/images/directionsImg.png" />Directions</ion-button>
+                  <ion-button class="bookAppointment_btn SFProText" (click)="bookAppointment()"><img
+                      class="bookAppointment_img" src="../../../../assets/images/bookAppointmentImg.png" />Book
+                    Appointment</ion-button>
+                </div>
+
+                <div class="directionsImage_div">
+                  <img class="directions_image" src="../../../../assets/images/image.png" />
+                  <img class="directions_image1" src="../../../../assets/images/image-1.png" />
+                  <img class="directions_image" src="../../../../assets/images/image.png" />
+                </div>
               </div>
 
-              <ion-textarea class="textarea" label="Purpose of Visit" labelPlacement="floating" fill="outline"
-                placeholder="Enter text" rows="4" name="purposeOfVisitDescript"
-                [(ngModel)]="payAmountModel.purposeOfVisitDescript" #purposeOfVisitDescript="ngModel"
-                required></ion-textarea>
-              <p class="validField" *ngIf="submitted && purposeOfVisitDescript?.errors?.['required']">
-                Purpose of Visit is required.
-              </p>
+              <div style="padding: 0px 0px 10px 0px;">
+                <p class="overview_text SFProText">Overview</p>
+                <p class="loremIpsum_text SFProText">Lorem ipsum dolor sit amet consectetur. Vehicula eget posuere
+                  faucibus
+                  ultrices
+                  sit phasellus. Aliquam penatibus commodo ut volutpat pretium.</p>
+                <div class="mainAlarm_div">
+                  <img src="../../../../assets/images/alarmImg.png" />
+                  <div>
+                    <p class="min_text SFProText">50 min</p>
+                    <p class="min_text1 SFProText">(Average Time for your turn)</p>
+                  </div>
+                </div>
+                <div class="mainCrowdDetection_div">
+                  <p class="crowdDetection_text SFProText">Crowd Detection</p>
+                  <div class="high_div">
+                    <p class="rounded_text"></p>
+                    <p class="high_text SFProText">High</p>
+                  </div>
+                </div>
+                <div class="mainCrowdAvailable_div">
+                  <p class="crowdAvailable_text SFProText">Crowd Available</p>
+                  <p class="crowdAvailable_text1 SFProText">80</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 
-              <ion-button class="payAmount_btn" (click)="payAmount(payAmountForm)">Pay Token Amount</ion-button>
-            </form>
+  <ion-modal [isOpen]="timeSlotOpen" (didDismiss)="timeSlotOpen=false" cssClass="calendar">
+    <ng-template>
+      <ion-content class="content" style="--background: white !important;">
+        <div class="h_100 w_100 end">
+          <div class="mainIonContent_div">
+            <div class="mainDirections_div">
+              <div style="padding: 20px;">
+                <div class="mainTastyliciousFood_div">
+                  <p class="tastylicious_text SFProText">Tastylicious Food and company</p>
+                  <ion-icon class="close_icon" name="close-circle-outline" (click)="timeSlotOpen=false"></ion-icon>
+                </div>
+
+                <p class="appointment_text Poppins">Appointment</p>
+                <div class="timeSlotCard">
+                  <ion-grig>
+                    <ion-row>
+                      <ion-col class="pad_0" size="3" *ngFor="let d of dateList">
+                        <div class="" [ngClass]="selectedDate===d?'timeSlot_div1':'timeSlot_div'"
+                          (click)="selectedData(d)">
+                          <p class="Poppins" [ngClass]="selectedDate===d?'sunday_text2':'sunday_text'">
+                            {{moment(d,'DD/MM/YYYY').format("ddd")}}</p>
+                          <p class="Poppins" [ngClass]="selectedDate===d?'sunday_text3':'sunday_text1'">
+                            {{moment(d, 'DD/MM/YYYY').format("DD")}}</p>
+                        </div>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grig>
+                </div>
+                <p class="availableTime_text Poppins">Available Time</p>
+                <ion-grig>
+                  <ion-row>
+                    <ion-col class="pad_0" size="3" *ngFor="let item of selectedService?.service_slot">
+                      <p class="Poppins" (click)="selectedTimeData(item)"
+                        [ngClass]="selectedTime===item?'availableTimeSlot':'availableTimeSlot1'">{{item}}</p>
+                    </ion-col>
+                  </ion-row>
+                </ion-grig>
+
+                <ion-button class="confirm_btn" (click)="confirmAppointment()">Confirm</ion-button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal [isOpen]="payAmountOpen" (didDismiss)="payAmountOpen=false" cssClass="calendar">
+    <ng-template>
+      <ion-content class="content" style="--background: white !important;">
+        <div class="h_100 w_100 end">
+          <div class="mainIonContent_div">
+            <div class="mainDirections_div">
+              <div style="padding: 20px;">
+                <div class="mainTastyliciousFood_div">
+                  <p class="tastylicious_text SFProText">Tastylicious Food and company</p>
+                  <ion-icon class="close_icon" name="close-circle-outline" (click)="payAmountOpen=false"></ion-icon>
+                </div>
+
+                <form class="w_100" #payAmountForm="ngForm">
+                  <ion-input class="name" type="text" label="Name" label-placement="floating" fill="outline"
+                    placeholder="Enter Name" name="fullName" [(ngModel)]="payAmountModel.fullName" #fullName="ngModel"
+                    required></ion-input>
+                  <p class="validField" *ngIf="submitted && fullName?.errors?.['required']">Name is required.</p>
+
+                  <ion-input class="password" type="email" label="Email" label-placement="floating" fill="outline"
+                    placeholder="Enter email" name="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                    [(ngModel)]="payAmountModel.email" #email="ngModel" required></ion-input>
+                  <p class="validField" *ngIf="submitted && email?.errors?.['required']">Email is required.</p>
+
+                  <p class="validField" *ngIf="submitted && email?.errors?.['pattern']">Invalid your email</p>
+
+                  <ion-input class="password" type="number" label="Mobile Number" label-placement="floating"
+                    fill="outline" placeholder="Enter Mobile Number" name="phoneNumber"
+                    [(ngModel)]="payAmountModel.phoneNumber" #phoneNumber="ngModel" required></ion-input>
+                  <p class="validField" *ngIf="submitted && phoneNumber?.errors?.['required']">Mobile Number is
+                    required.
+                  </p>
+
+                  <div class="w_100">
+                    <div class="selectCountry_div">
+                      <ion-select class="selectCountry" name="gender" [(ngModel)]="payAmountModel.gender"
+                        #gender="ngModel" required>
+                        <ion-select-option class="w_100" value="">Gender</ion-select-option>
+                        <ion-select-option class="w_100" value="yes">Male</ion-select-option>
+                        <ion-select-option class="w_100" value="no">Female</ion-select-option>
+                      </ion-select>
+                    </div>
+                    <p class="validField" *ngIf="submitted && gender?.errors?.['required']">
+                      Gender is required.
+                    </p>
+                  </div>
+
+                  <ion-textarea class="textarea" label="Purpose of Visit" labelPlacement="floating" fill="outline"
+                    placeholder="Enter text" rows="4" name="purposeOfVisitDescript"
+                    [(ngModel)]="payAmountModel.purposeOfVisitDescript" #purposeOfVisitDescript="ngModel"
+                    required></ion-textarea>
+                  <p class="validField" *ngIf="submitted && purposeOfVisitDescript?.errors?.['required']">
+                    Purpose of Visit is required.
+                  </p>
+
+                  <ion-button class="payAmount_btn" (click)="payAmount(payAmountForm)">Pay Token Amount</ion-button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </ion-content>
