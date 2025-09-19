@@ -31,11 +31,11 @@ export class HomePage implements OnInit {
   payAmountOpen: any = false;
 
   payAmountModel: any = {
-    fullName: '',
+    name: '',
     email: '',
-    phoneNumber: '',
+    phone: '',
     gender: '',
-    purposeOfVisitDescript: '',
+    purpose_of_visit: '',
   }
   submitted: any = false;
 
@@ -149,7 +149,8 @@ export class HomePage implements OnInit {
       } else {
         // iOS / Android (Capacitor)
         await Geolocation.requestPermissions();
-        return Geolocation.getCurrentPosition({ enableHighAccuracy: true });
+        // return Geolocation.getCurrentPosition({ enableHighAccuracy: true });
+        return await Geolocation.getCurrentPosition();
       }
     } catch (err) {
       console.error('Location error:', err);
@@ -215,13 +216,17 @@ export class HomePage implements OnInit {
     console.log(e)
     this.address = e.description
     this.showLocation = false
-    this.GoogleGeocoder.geocode({ 'address': e.description }, (res: any) => {
+    this.GoogleGeocoder.geocode({ 'address': e.description }, async (res: any) => {
       console.log(res)
       console.log(res[0].geometry.location.lat())
       this.location = {
         lat: res[0].geometry.location.lat(),
         lng: res[0].geometry.location.lng()
       };
+
+      await this.map.setCamera({
+        coordinate: this.location
+      });
       console.log(this.location)
     })
   }
@@ -313,30 +318,42 @@ export class HomePage implements OnInit {
       this.submitted = true;
       return
     }
-    return
-    console.log(this.payAmountModel)
+
     const data = {
-      username: this.payAmountModel.email,
-      password: this.payAmountModel.password,
+      name: this.payAmountModel.name,
+      email: this.payAmountModel.email,
+      phone: this.payAmountModel.phone,
+      gender: this.payAmountModel.gender,
+      purpose_of_visit: this.payAmountModel.purpose_of_visit,
+      date: moment(this.selectedDate, "DD/MM/YYYY").format(),
+      time: moment(this.selectedTime, 'HH:mm').format("h:mm A"),
+      service: this.selectedService?._id,
     }
+    console.log(data)
+    console.log(this.payAmountModel)
+    // return
     this.common.showLoading();
-    this.service.login(data).subscribe(
+    this.service.createAppointment(data).subscribe(
       (res: any) => {
         this.common.hideLoading();
         console.log(res);
         if (res?.status) {
+          this.payAmountOpen = false;
           this.submitted = false
-          this.common.presentToaster('You are successfully logged in')
-          localStorage.setItem('token', res.data.token)
-          localStorage.setItem('userDetail', JSON.stringify(res.data))
-          this.navCtrl.navigateRoot(['/tabs/home'])
+          // this.common.presentToaster(res?.data?.message)
           this.payAmountModel = {
-            fullName: '',
+            name: '',
             email: '',
-            phoneNumber: '',
+            phone: '',
             gender: '',
-            purposeOfVisitDescript: '',
+            purpose_of_visit: '',
           }
+          setTimeout(() => {
+            // this.navCtrl.navigateForward(['/payment-success'])
+            this.navCtrl.navigateForward(['/payment-success'], {
+              queryParams: { appointment_id: res.data._id },
+            });
+          }, 1000);
         }
       },
       (err) => {

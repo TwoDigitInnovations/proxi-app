@@ -74,6 +74,21 @@ export class ServiceService {
     return this.common.post(url, data);
   }
 
+  createAppointment(data: any) {
+    const url = `appointment/createAppointment`;
+    return this.common.post(url, data);
+  }
+
+  getRequestAppointmentById(id: any) {
+    const url = `appointment/getRequestAppointmentById/${id}`;
+    return this.common.get(url);
+  }
+
+  getAppointmentByUser() {
+    const url = `appointment/getAppointmentByUser`;
+    return this.common.get(url,);
+  }
+
   // getProperty(data?: any) {
   //   let d = new HttpParams();
   //   if (data) {

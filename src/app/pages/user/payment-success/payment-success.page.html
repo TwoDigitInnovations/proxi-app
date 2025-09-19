@@ -13,31 +13,32 @@
       <p class="ticket_text Poppins">TICKET</p>
 
       <div class="card">
+        <div class="center">
+          <img class="user_image" [src]="appointmentIdData?.service?.profile" />
+        </div>
         <p class="borderDashed"></p>
         <div style="position: absolute; top: 185px;">
           <ion-grid class="pad_0">
             <ion-row>
               <ion-col size="6" style="padding:0px 5px 0px 0px;">
                 <p class="name_text Poppins">NAME</p>
-                <p class="surendhar_text Poppins">Surendhar P</p>
+                <p class="surendhar_text Poppins">{{appointmentIdData?.name}}</p>
               </ion-col>
               <ion-col size="6" style="padding:0px 0px 0px 5px !important;">
                 <p class="name_text Poppins">Ticket Number</p>
-                <p class="surendhar_text Poppins">50</p>
+                <p class="surendhar_text Poppins">{{appointmentIdData?.ticketNumber}}</p>
               </ion-col>
               <ion-col size="6" style="padding:0px 5px 0px 0px; margin-top: 10px;">
                 <p class="name_text Poppins">MOBILE</p>
-                <p class="surendhar_text Poppins">+91 9500804572</p>
+                <p class="surendhar_text Poppins">{{appointmentIdData?.phone}}</p>
               </ion-col>
               <ion-col size="6" style="padding:0px 0px 0px 5px; margin-top: 10px;">
                 <p class="name_text Poppins">Gender</p>
-                <p class="surendhar_text Poppins">Male</p>
+                <p class="surendhar_text Poppins">{{appointmentIdData?.gender}}</p>
               </ion-col>
               <ion-col size="12" class="pad_0" style="margin-top: 10px;">
                 <p class="name_text Poppins">Purpose of visit</p>
-                <p class="surendhar_text Poppins">Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem
-                  IpsumLorem
-                  IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum</p>
+                <p class="surendhar_text Poppins">{{appointmentIdData?.purpose_of_visit}}</p>
               </ion-col>
               <ion-col size="12" class="pad_0 center flex_col" style="margin-top: 10px;">
                 <p class="name_text Poppins">Transaction ID</p>
@@ -47,6 +48,8 @@
           </ion-grid>
         </div>
       </div>
+
+      <ion-button class="goToHome_btn" (click)="goToHome()">Go To Home</ion-button>
     </div>
   </div>
 </ion-content>

@@ -1,6 +1,6 @@
 ion-header {
     background: #F05023;
-    height: 65px;
+    // height: 65px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -27,8 +27,19 @@ ion-header {
 }
 
 .user_icon {
-    width: 18px;
-    height: 18px;
+    // width: 18px;
+    // height: 18px;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.user_icon1 {
+    // width: 18px;
+    // height: 18px;
+    width: 30px;
+    height: 30px;
+    color: white;
 }
 
 .mainBackground {

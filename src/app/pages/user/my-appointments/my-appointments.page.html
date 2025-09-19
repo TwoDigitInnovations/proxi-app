@@ -3,21 +3,24 @@
     <div class="left">
       <p class="mainTitle_text PPNeueMontreal">My Appointments</p>
     </div>
-    <img class="user_icon" src="../../../../assets/images/userIcon.png" />
+    <img class="user_icon" *ngIf="userDetail?.profile" [src]="userDetail?.profile" />
+    <!-- <img class="user_icon1" *ngIf="!userDetail?.profile" src="../../../../assets/images/userIcon.png" /> -->
+    <ion-icon class="user_icon1" *ngIf="!userDetail?.profile" name="person-outline"></ion-icon>
   </div>
 </ion-header>
 
 <ion-content class="mainBackground">
   <div style="padding: 20px;">
     <div class="mainCard">
-      <div class="card" *ngFor="let items of [1,2,3,4,5,6,7,8,9]" (click)="myAppointmentsDetails()">
+      <div class="card" *ngFor="let item of appointmentByUserData" (click)="myAppointmentsDetails(item?._id)">
         <div class="mainNotifications_div">
           <div class="notifications_div">
-            <img class="notificationsIcon" src="../../../../assets/images/notificationsIcon.png" />
+            <img class="notificationsIcon" [src]="item?.service?.profile" />
           </div>
           <div>
-            <p class="date_text Inter">8th July, 2023</p>
-            <p class="andrew_text Inter">Dr. Andrew</p>
+            <p class="date_text Inter">{{moment(item?.date).format("DD MMM, YYYY")}}</p>
+            <!-- 8th July, 2023  -->
+            <p class="andrew_text Inter">{{item?.name}}</p>
           </div>
         </div>
       </div>

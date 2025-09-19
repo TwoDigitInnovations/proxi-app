@@ -16,6 +16,7 @@ export class AppComponent {
         `--safe-area-inset-top`,
         `${statusBarHeight}px`,
       );
+      document.documentElement.style.setProperty(`--safe-area-inset-bottom`, `${statusBarHeight}px`);
     });
   }
 }

@@ -35,8 +35,15 @@ ion-header {
 }
 
 .user_icon {
-    width: 18px;
-    height: 18px;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.user_icon1 {
+    width: 30px;
+    height: 30px;
+    color: white;
 }
 
 .mainBackground {
@@ -48,6 +55,7 @@ ion-header {
 .drAndrew_img {
     width: 190px;
     height: 190px;
+    border-radius: 52px;
 }
 
 .drAndrew_text {
