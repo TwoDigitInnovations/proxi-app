@@ -89,6 +89,16 @@ export class ServiceService {
     return this.common.get(url,);
   }
 
+  getAppointmentByProvider() {
+    const url = `appointment/getAppointmentByProvider`;
+    return this.common.get(url,);
+  }
+
+  getRequestAppointmentByProviderId(id: any) {
+    const url = `appointment/getRequestAppointmentByProviderId/${id}`;
+    return this.common.get(url);
+  }
+
   // getProperty(data?: any) {
   //   let d = new HttpParams();
   //   if (data) {

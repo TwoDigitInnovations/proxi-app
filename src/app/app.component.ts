@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 // import { TranslateService } from '@ngx-translate/core';
 import { SafeArea } from 'capacitor-plugin-safe-area';
+// import { StatusBar, Style } from '@capacitor/status-bar';
 
 @Component({
   selector: 'app-root',
@@ -18,5 +19,13 @@ export class AppComponent {
       );
       document.documentElement.style.setProperty(`--safe-area-inset-bottom`, `${statusBarHeight}px`);
     });
+
+    // this.statusBar();
   }
+
+  // async statusBar() {
+  //   // StatusBar.setOverlaysWebView({ overlay: true });
+  //   // await StatusBar.setBackgroundColor({ color: '#000000' });
+  //   await StatusBar.setStyle({ style: Style.Dark });
+  // }
 }

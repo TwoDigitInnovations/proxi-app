@@ -3,7 +3,7 @@ import { NavController } from '@ionic/angular';
 import { CommonService } from 'src/app/common.service';
 import { ServiceService } from 'src/app/service.service';
 import * as moment from 'moment';
-import { StatusBar, Style } from '@capacitor/status-bar';
+// import { StatusBar, Style } from '@capacitor/status-bar';
 
 @Component({
   standalone: false,
@@ -33,12 +33,12 @@ export class MyAppointmentsPage implements OnInit {
     console.log(this.userDetail)
 
     this.getAppointmentByUser();
-    this.statusBar();
+    // this.statusBar();
   }
 
-  async statusBar() {
-    await StatusBar.setStyle({ style: Style.Dark });
-  }
+  // async statusBar() {
+  //   await StatusBar.setStyle({ style: Style.Dark });
+  // }
 
 
   myAppointmentsDetails(id: any) {
