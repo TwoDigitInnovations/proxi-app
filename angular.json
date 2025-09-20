@@ -36,7 +36,11 @@
               "src/theme/variables.scss",
               "node_modules/ngx-spinner/animations/ball-scale-multiple.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "moment",
+              "fast-deep-equal"
+            ]
           },
           "configurations": {
             "production": {
