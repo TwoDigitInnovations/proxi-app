@@ -50,4 +50,29 @@ export class MyAppointmentsDetailsProviderPage implements OnInit {
       }
     );
   }
+
+  updateAppointmentStatusByProvider() {
+    const data = {
+      status: 'Completed',
+      id: this.appointmentIdData?._id
+    }
+    console.log(data)
+    // return
+    this.common.showLoading();
+    this.service.updateAppointmentStatusByProvider(data).subscribe(
+      (res: any) => {
+        this.common.hideLoading();
+        console.log(res);
+        if (res?.status) {
+          this.common.presentToaster('Status updated successfully')
+          this.appointmentIdData.status = 'Completed'
+        }
+      },
+      (err) => {
+        this.common.hideLoading();
+        console.log(err);
+        this.common.presentToaster(err?.error?.message);
+      }
+    );
+  }
 }

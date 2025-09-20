@@ -7,6 +7,13 @@
       </div>
 
       <form class="w_100" #signUpForm="ngForm">
+        <div class="buttonDiv">
+          <ion-button class="user_btn" [ngClass]="activeButton==='user'?'activeButton':'activeButton1'"
+            (click)="userAndProviderBtn('user')">User</ion-button>
+          <ion-button class="provider_btn" [ngClass]="activeButton==='provider'?'activeButton':'activeButton1'"
+            (click)="userAndProviderBtn('provider')">Provider</ion-button>
+        </div>
+
         <ion-input class="name PPNeueMontreal" type="text" label="Name" label-placement="floating" fill="outline"
           placeholder="Enter Name" name="fullName" [(ngModel)]="signUpModel.fullName" #fullName="ngModel"
           required></ion-input>

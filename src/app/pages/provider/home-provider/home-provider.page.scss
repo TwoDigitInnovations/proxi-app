@@ -263,3 +263,52 @@ ion-header {
     padding: 15px 0px 15px 0px;
     margin: 0px 0px 0px 0px;
 }
+
+.visitingStatus_div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.visitingStatus_text {
+    width: 100%;
+    font-weight: 500;
+    font-size: 14px;
+    color: black;
+    margin: 0px;
+}
+
+.close_icon {
+    width: 25px;
+    height: 25px;
+    color: red;
+}
+
+.selectCountry_div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px 0px 0px;
+    background: white;
+    // border: 1px solid #363636;
+    border-radius: 10px;
+    box-shadow: 0px 1px 5.4px 0px #36363640;
+}
+
+.selectCountry {
+    width: 100%;
+    height: 46px;
+    padding: 0px 16px 0px 16px !important;
+    font-size: 16px;
+    font-weight: 400;
+    color: #706E6E;
+    margin: 0px;
+
+    &::part(icon) {
+        position: absolute !important;
+        right: 0px !important;
+    }
+}

@@ -12,6 +12,7 @@ import { ServiceService } from 'src/app/service.service';
 export class HomeProviderPage implements OnInit {
   userDetail: any;
   appointmentByProviderData: any = [];
+  changeStatusOpen: any = false;
 
   constructor(
     private navCtrl: NavController,

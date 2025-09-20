@@ -15,11 +15,13 @@ export class SignUpPage implements OnInit {
     email: '',
     phoneNumber: '',
     password: '',
+    role: 'user'
     // otp: '',
   }
   submitted: any = false;
   otpShow: any = false;
   token: any;
+  activeButton: any = 'user'
 
   constructor(
     private navCtrl: NavController,
@@ -42,6 +44,13 @@ export class SignUpPage implements OnInit {
     this.navCtrl.navigateForward(['/sign-in'])
   }
 
+  userAndProviderBtn(type: any) {
+    console.log(type)
+    this.activeButton = type;
+    this.signUpModel.role = type;
+    console.log(this.signUpModel.role)
+  }
+
   validationForm(signUpForm: any) {
     if (signUpForm.form.invalid) {
       this.submitted = true
@@ -62,7 +71,8 @@ export class SignUpPage implements OnInit {
       email: this.signUpModel.email,
       phone: this.signUpModel.phoneNumber,
       password: this.signUpModel.password,
-      role: 'user',
+      role: this.signUpModel.role,
+      // role: 'user',
       // role: 'provider',
       // role: 'admin',
     }

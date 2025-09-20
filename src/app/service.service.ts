@@ -99,6 +99,11 @@ export class ServiceService {
     return this.common.get(url);
   }
 
+  updateAppointmentStatusByProvider(data: any) {
+    const url = `appointment/updateAppointmentStatusByProvider`;
+    return this.common.post(url, data);
+  }
+
   // getProperty(data?: any) {
   //   let d = new HttpParams();
   //   if (data) {

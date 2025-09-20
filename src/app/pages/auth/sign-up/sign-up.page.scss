@@ -42,7 +42,8 @@
     font-size: 16px;
     font-weight: 400;
     --border-color: #858080;
-    margin: 30px 0px 0px 0px;
+    // margin: 30px 0px 0px 0px;
+    margin: 20px 0px 0px 0px;
 }
 
 .password {
@@ -95,4 +96,48 @@
     text-align: center;
     color: #858080;
     margin: 0px;
+}
+
+.buttonDiv {
+    // background: #EEEEEE;
+    background: #FFE8DA;
+    height: 50px;
+    width: 100%;
+    border-radius: 10px;
+    margin: 30px 0px 0px 0px;
+}
+
+.user_btn {
+    height: 50px;
+    width: 160px;
+    --border-radius: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    margin: 0px;
+    --box-shadow: none;
+    text-transform: capitalize;
+}
+
+.provider_btn {
+    height: 50px;
+    width: 160px;
+    --border-radius: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    margin: 0px;
+    --box-shadow: none;
+    text-transform: capitalize;
+}
+
+.activeButton {
+    color: white !important;
+    --background: #FF5207 !important;
+}
+
+.activeButton1 {
+    color: black !important;
+    // --background: #EEEEEE !important;
+    --background: #FFE8DA !important;
 }

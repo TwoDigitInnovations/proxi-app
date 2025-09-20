@@ -39,7 +39,8 @@
       </div>
     </div>
 
-    <ion-button class="next_btn" *ngIf="appointmentIdData?.status==='Pending'">Complete</ion-button>
+    <ion-button class="next_btn" *ngIf="appointmentIdData?.status==='Pending'"
+      (click)="updateAppointmentStatusByProvider()">Complete</ion-button>
     <ion-button class="completed_btn" *ngIf="appointmentIdData?.status==='Completed'">Completed</ion-button>
   </div>
 </ion-content>

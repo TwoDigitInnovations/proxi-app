@@ -42,7 +42,7 @@
     <div class="w_100">
       <div class="nextAppointments_div">
         <p class="nextAppointments_text">Visitors Status</p>
-        <p class="seeAll_text">Change Status</p>
+        <p class="seeAll_text" (click)="changeStatusOpen=true">Change Status</p>
       </div>
 
       <div class="visitorsStatus_card">
@@ -88,4 +88,33 @@
     </div>
 
   </div>
+
+  <ion-modal [isOpen]="changeStatusOpen" (didDismiss)="changeStatusOpen=false" cssClass="calendar1">
+    <ng-template>
+      <ion-content class="ion-padding content" style="--background: white !important;">
+        <div class="h_100 w_100 center">
+          <div class="mainIonContent_div1">
+            <div class="visitingStatus_div">
+              <p class="visitingStatus_text">Do you want to change Visiting status ?</p>
+              <ion-icon class="close_icon" name="close-circle-outline" (click)="changeStatusOpen=false"></ion-icon>
+            </div>
+
+            <div class="w_100">
+              <div class="selectCountry_div">
+                <ion-select class="selectCountry">
+                  <!-- name="gender" [(ngModel)]="payAmountModel.gender" #gender="ngModel" required -->
+                  <ion-select-option class="w_100" value="">Available</ion-select-option>
+                  <ion-select-option class="w_100" value="Male">Available</ion-select-option>
+                  <ion-select-option class="w_100" value="Female">Available</ion-select-option>
+                </ion-select>
+              </div>
+              <!-- <p class="validField" *ngIf="submitted && gender?.errors?.['required']">
+                Gender is required.
+              </p> -->
+            </div>
+          </div>
+        </div>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>
