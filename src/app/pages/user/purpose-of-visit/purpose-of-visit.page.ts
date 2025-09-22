@@ -18,6 +18,7 @@ export class PurposeOfVisitPage implements OnInit {
     purposeOfVisitDescript: '',
   }
   submitted: any = false;
+  userDetail: any;
 
   constructor(
     private navCtrl: NavController,
@@ -26,6 +27,14 @@ export class PurposeOfVisitPage implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+  ionViewWillEnter() {
+    const userDetail = localStorage.getItem('userDetail')
+    if (userDetail) {
+      this.userDetail = JSON.parse(userDetail)
+    }
+    console.log(this.userDetail)
   }
 
   goBack() {

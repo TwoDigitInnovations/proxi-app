@@ -4,7 +4,8 @@
       <ion-icon class="back_icon" (click)="goBack()" name="chevron-back-outline"></ion-icon>
       <p class="mainTitle_text PPNeueMontreal">Purpose of Visit</p>
     </div>
-    <img class="user_icon" src="../../../../assets/images/userIcon.png" />
+    <img class="user_icon" *ngIf="userDetail?.profile" [src]="userDetail?.profile" />
+    <ion-icon class="user_icon1" *ngIf="!userDetail?.profile" name="person-outline"></ion-icon>
   </div>
 </ion-header>
 

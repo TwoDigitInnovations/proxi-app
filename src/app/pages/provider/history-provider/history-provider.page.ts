@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
 
 @Component({
   standalone: false,
-  selector: 'app-history',
-  templateUrl: './history.page.html',
-  styleUrls: ['./history.page.scss'],
+  selector: 'app-history-provider',
+  templateUrl: './history-provider.page.html',
+  styleUrls: ['./history-provider.page.scss'],
 })
-export class HistoryPage implements OnInit {
+export class HistoryProviderPage implements OnInit {
   userDetail: any;
 
   constructor() { }

@@ -35,8 +35,16 @@ ion-header {
 }
 
 .user_icon {
-    width: 18px;
-    height: 18px;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    border-radius: 100%;
+}
+
+.user_icon1 {
+    width: 30px;
+    height: 30px;
+    color: white;
 }
 
 .mainBackground {

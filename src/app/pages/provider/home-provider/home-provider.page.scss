@@ -312,3 +312,19 @@ ion-header {
         right: 0px !important;
     }
 }
+
+.next_btn {
+    --border-radius: 10px;
+    --background: #FF5207;
+    color: #FFF;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 100%;
+    margin: 20px 0px 0px 0px;
+    height: 46px;
+    text-transform: none;
+    --box-shadow: 0px 5px 20px 10px #2048BD33;
+}

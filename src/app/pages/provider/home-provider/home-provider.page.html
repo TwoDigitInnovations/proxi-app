@@ -101,17 +101,15 @@
 
             <div class="w_100">
               <div class="selectCountry_div">
-                <ion-select class="selectCountry">
-                  <!-- name="gender" [(ngModel)]="payAmountModel.gender" #gender="ngModel" required -->
-                  <ion-select-option class="w_100" value="">Available</ion-select-option>
-                  <ion-select-option class="w_100" value="Male">Available</ion-select-option>
-                  <ion-select-option class="w_100" value="Female">Available</ion-select-option>
+                <ion-select class="selectCountry" name="isAvailable" [(ngModel)]="isAvailable">
+                  <ion-select-option class="w_100" value="">Selected Status</ion-select-option>
+                  <ion-select-option class="w_100" value="true">Available</ion-select-option>
+                  <ion-select-option class="w_100" value="false">InAvailable</ion-select-option>
                 </ion-select>
               </div>
-              <!-- <p class="validField" *ngIf="submitted && gender?.errors?.['required']">
-                Gender is required.
-              </p> -->
             </div>
+
+            <ion-button class="next_btn" (click)="updateProfile()">Change Status</ion-button>
           </div>
         </div>
       </ion-content>

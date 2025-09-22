@@ -13,12 +13,14 @@ export class HomeProviderPage implements OnInit {
   userDetail: any;
   appointmentByProviderData: any = [];
   changeStatusOpen: any = false;
+  isAvailable: any = 'true';
 
   constructor(
     private navCtrl: NavController,
     private common: CommonService,
     private service: ServiceService,
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
   }
@@ -31,6 +33,7 @@ export class HomeProviderPage implements OnInit {
     console.log(this.userDetail)
 
     this.getAppointmentByProvider();
+    this.getProfile();
   }
 
   getAppointmentByProvider() {
@@ -59,5 +62,51 @@ export class HomeProviderPage implements OnInit {
 
   myAppointmentsProvider() {
     this.navCtrl.navigateForward(['/tabs/my-appointments-provider'])
+  }
+
+  updateProfile() {
+    const data = new FormData();
+    data.append('isAvailable', this.isAvailable);
+    console.log(data)
+    // return
+    this.common.showLoading();
+    this.service.updateProfile(data).subscribe(
+      (res: any) => {
+        this.common.hideLoading();
+        if (res.status) {
+          this.changeStatusOpen = false;
+        }
+        // this.common.presentToaster(res?.data?.message)
+      },
+      (err) => {
+        this.common.hideLoading();
+        console.log(err);
+        this.common.presentToaster(err?.error?.message);
+      }
+    );
+  }
+
+  getProfile() {
+    this.common.showLoading();
+    this.service.getProfile().subscribe(
+      (res: any) => {
+        this.common.hideLoading();
+        if (res.status) {
+          console.log(res.data.isAvailable === true)
+          if (res.data.isAvailable === true) {
+            this.isAvailable = 'true';
+          }
+          if (res.data.isAvailable === false) {
+            this.isAvailable = 'false';
+          }
+          localStorage.setItem('userDetail', JSON.stringify(res?.data))
+        }
+      },
+      (err) => {
+        this.common.hideLoading();
+        console.log(err);
+        this.common.presentToaster(err?.error?.message);
+      }
+    );
   }
 }

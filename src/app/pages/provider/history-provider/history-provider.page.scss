@@ -27,6 +27,8 @@ ion-header {
 }
 
 .user_icon {
+    // width: 18px;
+    // height: 18px;
     width: 30px;
     height: 30px;
     object-fit: contain;
@@ -34,10 +36,13 @@ ion-header {
 }
 
 .user_icon1 {
+    // width: 18px;
+    // height: 18px;
     width: 30px;
     height: 30px;
     color: white;
 }
+
 
 .mainBackground {
     --background: white;
@@ -45,57 +50,53 @@ ion-header {
     width: 100%;
 }
 
-.personal_text {
-    font-size: 20px;
-    font-weight: 800;
-    color: #202020;
-    margin: 0px 0px 20px 0px;
+.mainCard {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
 }
 
 .card {
-    background: white;
+    background: #F05023;
     width: 100%;
-    height: 42px;
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    gap: 10px;
-    border-bottom: 1px solid #00000020;
+    border-radius: 10px;
+    padding: 10px;
 }
 
-.card1 {
-    background: white;
-    width: 100%;
-    height: 42px;
+.mainNotifications_div {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: start;
-    gap: 10px;
-    border-bottom: 1px solid #00000020;
-    margin: 20px 0px 0px 0px;
+    gap: 20px;
 }
 
-.profile_text {
-    font-size: 16px;
-    font-weight: 600;
-    color: black;
+.notifications_div {
+    background: white;
+    width: 37px;
+    height: 37px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notificationsIcon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.date_text {
+    font-size: 12px;
+    font-weight: 400;
+    color: #FFFFFF;
     margin: 0px;
 }
 
-.forward_icon {
-    font-size: 25px;
-    color: black;
-}
-
-.selectLanguage_text {
-    width: 100%;
-    height: 50px;
-    border-radius: 15px;
-    background: none !important;
-    border: 1px solid black;
-    padding: 0px 10px 0px 20px !important;
-    font-size: 13px;
+.andrew_text {
+    font-size: 16px;
     font-weight: 400;
-    color: black;
-    margin: 0px 0px 20px 0px;
+    color: #FFFFFF;
+    margin: 4px 0px 0px 0px;
 }

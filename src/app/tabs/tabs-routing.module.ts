@@ -60,6 +60,10 @@ const routes: Routes = [
         loadChildren: () => import('../pages/provider/profile-provider/profile-provider.module').then(m => m.ProfileProviderPageModule)
       },
       {
+        path: 'history-provider',
+        loadChildren: () => import('../pages/provider/history-provider/history-provider.module').then(m => m.HistoryProviderPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'
