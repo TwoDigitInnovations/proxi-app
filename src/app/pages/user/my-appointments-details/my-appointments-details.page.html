@@ -13,8 +13,8 @@
   <div style="padding: 20px;">
     <div class="center flex_col">
       <img class="drAndrew_img" [src]="appointmentIdData?.service?.profile" />
-      <p class="drAndrew_text Inter">{{appointmentIdData?.name}}</p>
-      <p class="descript_text Inter">{{appointmentIdData?.purpose_of_visit}}</p>
+      <p class="drAndrew_text Inter">{{appointmentIdData?.service?.service_name}}</p>
+      <p class="descript_text Inter">{{appointmentIdData?.service?.service_description}}</p>
 
       <ion-button class="signIn_btn" (click)="purposeOfVisit()">See Purpose of Visit</ion-button>
     </div>

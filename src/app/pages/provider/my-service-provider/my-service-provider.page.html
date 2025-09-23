@@ -1,0 +1,136 @@
+<ion-header>
+  <div class="mainHeader">
+    <div class="left">
+      <ion-icon class="back_icon" (click)="goBack()" name="chevron-back-outline"></ion-icon>
+      <p class="mainTitle_text PPNeueMontreal">Profile</p>
+    </div>
+    <div class="editIcon_div1" *ngIf="!isEdit" (click)="isEdit= true">
+      <img class="editImg1" src="../../../../assets/images/editImg.png" />
+    </div>
+  </div>
+</ion-header>
+
+<ion-content class="mainBackground">
+  <div style="padding: 20px;">
+    <div class="center" style="position: relative;">
+      <div class="profileImg_div">
+        <ion-avatar class="profileImg">
+          <img class="profileImg" [src]="imagesSource.base64Data" />
+          <!-- src="../../../../assets/images/profileImg.png" -->
+        </ion-avatar>
+        <div class="editIcon_div" *ngIf="isEdit" (click)="takePicture()">
+          <img class="editImg" src="../../../../assets/images/editImg.png" />
+        </div>
+      </div>
+    </div>
+
+    <form class="w_100" #profileForm="ngForm">
+      <div class="w_100">
+        <ion-input [readonly]="!isEdit" class="username_input Raleway" type="text" placeholder="Name" name="name"
+          [(ngModel)]="profileModel.name" #name="ngModel" required></ion-input>
+        <p class="validField" *ngIf="submitted && name?.errors?.['required']">Name is required.</p>
+      </div>
+
+      <div class="w_100">
+        <ion-input [readonly]="!isEdit" class="email_input Raleway" type="email" placeholder="Email" name="email"
+          pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="profileModel.email" #email="ngModel"
+          required></ion-input>
+        <p class="validField" *ngIf="submitted && email?.errors?.['required']">Email is required.</p>
+        <p class="validField" *ngIf="submitted && email?.errors?.['pattern']">Invalid your email</p>
+      </div>
+
+      <div class="w_100">
+        <ion-input [readonly]="!isEdit" class="email_input Raleway" type="Number" placeholder="Phone Number"
+          name="phoneNumber" [(ngModel)]="profileModel.phoneNumber" #phoneNumber="ngModel" required></ion-input>
+        <p class="validField" *ngIf="submitted && phoneNumber?.errors?.['required']">Phone Number is required.</p>
+      </div>
+
+      <div class="w_100">
+        <ion-input [readonly]="!isEdit" class="email_input Raleway" type="text" placeholder="Service Name"
+          name="service_name" [(ngModel)]="profileModel.service_name" #service_name="ngModel" required></ion-input>
+        <p class="validField" *ngIf="submitted && service_name?.errors?.['required']">Service Name is required.</p>
+      </div>
+
+      <div class="w_100">
+        <div class="address_div">
+          <ion-input [readonly]="!isEdit" class="name_input Raleway" type="text" placeholder="Address" name="address"
+            [(ngModel)]="profileModel.address" #address="ngModel" required
+            (ngModelChange)="UpdateSearchResults($event)"></ion-input>
+          <ion-card class="search_div" *ngIf='showLocation'>
+            <ion-list class="w_100 pad_0">
+              <ion-item class="search_item" *ngFor='let item of autocompleteItems' (click)='SelectSearchResult(item)'>
+                {{item.description}}
+              </ion-item>
+            </ion-list>
+          </ion-card>
+        </div>
+        <p class="validField" *ngIf="submitted && address?.errors?.['required']">
+          Address is required.
+        </p>
+      </div>
+
+      <div class="w_100">
+        <div style="display: flex; align-items: center; margin-top: 20px; gap: 10px; margin-bottom: 5px;">
+          <ion-input [readonly]="!isEdit" class="email_input Raleway" style="margin-top: 0px !important;" type="time"
+            placeholder="Service Slot" name="service_slot" [(ngModel)]="profileModel.service_slot"
+            #service_slot="ngModel" (ngModelChange)="selectedServiceSlot($event)"></ion-input>
+          <ion-button [disabled]="!isEdit" class="add_btn Raleway" (click)="addServiceSlot()">Add</ion-button>
+        </div>
+
+        <ion-grid class="pad_0">
+          <ion-row>
+            <ion-col size="4" class="addServiceSlot_div" *ngFor="let item of serviceSlotData">
+              <ion-icon name="close-circle" class="closeCircle_icon1" (click)="removeServiceSlotImage(item)"
+                *ngIf="isEdit"></ion-icon>
+              <p class="time_text">{{item}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <!-- <p class="validField" *ngIf="submitted && service_slot?.errors?.['required']">Service Slot is required.</p> -->
+      </div>
+
+      <div class="ownername_div">
+        <ion-select [disabled]="!isEdit" class="ionSelectOption Raleway" label="Select Category" cancelText="CANCEL"
+          okText="OK" name="category" [(ngModel)]="profileModel.category" [value]="profileModel.category"
+          (ngModelChange)="selectedameneties($event)">
+          <ion-select-option *ngFor="let item of categoryData" [value]="item._id">{{item.name}}</ion-select-option>
+        </ion-select>
+      </div>
+
+      <div class="w_100">
+        <textarea [readonly]="!isEdit" class="textarea Raleway" placeholder="Service Description" rows="4"
+          name="service_description" [(ngModel)]="profileModel.service_description" #service_description="ngModel"
+          required></textarea>
+        <p class="validField" *ngIf="submitted && service_description?.errors?.['required']">
+          Service Description is required.
+        </p>
+      </div>
+
+      <div class="ownername_div">
+        <p class="uploadedDocument_text">Uploaded Document</p>
+        <ion-grid class="pad_0">
+          <ion-row>
+            <ion-col size="6" class="center openImg_div" style=" position:relative;"
+              *ngFor="let item of profileModel.document">
+              <ion-icon name="close-circle" class="closeCircle_icon" (click)="removeImage(item)"
+                *ngIf="isEdit"></ion-icon>
+              <img class="profile_img1" [src]="item?.base64Data || item?.imageUrl" />
+            </ion-col>
+            <ion-col size="6" class="openImg_div" *ngIf="isEdit">
+              <div class="center flex_col">
+                <div class="editIcon_div2" (click)="takeMultiPicture()">
+                  <ion-icon class="editIcon" name="add-outline"></ion-icon>
+                </div>
+                <p class="uploadImage_text">Upload Image</p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+      <ion-button class="signIn_btn NunitoSans" *ngIf="isEdit" (click)="updateProfile(profileForm)">Save
+        Changes</ion-button>
+    </form>
+  </div>
+</ion-content>

@@ -66,6 +66,10 @@ export class SettingsProviderPage implements OnInit {
     this.navCtrl.navigateForward(['/tabs/profile-provider'])
   }
 
+  myServicePage() {
+    this.navCtrl.navigateForward(['/tabs/my-service-provider'])
+  }
+
   termsAndConditionsPage() {
     this.navCtrl.navigateForward(['/terms-and-conditions'])
   }

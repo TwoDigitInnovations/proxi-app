@@ -64,6 +64,10 @@ const routes: Routes = [
         loadChildren: () => import('../pages/provider/history-provider/history-provider.module').then(m => m.HistoryProviderPageModule)
       },
       {
+        path: 'my-service-provider',
+        loadChildren: () => import('../pages/provider/my-service-provider/my-service-provider.module').then(m => m.MyServiceProviderPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'

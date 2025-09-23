@@ -319,6 +319,9 @@ export class HomePage implements OnInit {
       return
     }
 
+    const fullDate = this.selectedDate + "," + this.selectedTime
+
+
     const data = {
       name: this.payAmountModel.name,
       email: this.payAmountModel.email,
@@ -328,6 +331,7 @@ export class HomePage implements OnInit {
       date: moment(this.selectedDate, "DD/MM/YYYY").format(),
       time: moment(this.selectedTime, 'HH:mm').format("h:mm A"),
       service: this.selectedService?._id,
+      full_date: moment(fullDate, "DD/MM/YYYY,HH:mm").format()
     }
     console.log(data)
     console.log(this.payAmountModel)

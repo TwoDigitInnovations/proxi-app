@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { CommonService } from 'src/app/common.service';
 import { ServiceService } from 'src/app/service.service';
@@ -10,21 +11,24 @@ import { ServiceService } from 'src/app/service.service';
   styleUrls: ['./purpose-of-visit.page.scss'],
 })
 export class PurposeOfVisitPage implements OnInit {
-  purposeOfVisitModel: any = {
-    fullName: '',
-    email: '',
-    phoneNumber: '',
-    gender: '',
-    purposeOfVisitDescript: '',
-  }
-  submitted: any = false;
   userDetail: any;
+  appointmentIdData: any = {};
+  appointmentId: any;
 
   constructor(
     private navCtrl: NavController,
     private common: CommonService,
     private service: ServiceService,
-  ) { }
+    private route: ActivatedRoute,
+  ) {
+    this.route.queryParams.subscribe((params: any) => {
+      console.log(params)
+      this.appointmentId = params.appointment_id;
+      if (this.appointmentId) {
+        this.getRequestAppointmentById()
+      }
+    });
+  }
 
   ngOnInit() {
   }
@@ -41,36 +45,12 @@ export class PurposeOfVisitPage implements OnInit {
     this.navCtrl.back();
   }
 
-  submit(purposeOfVisitForm: any) {
-    if (purposeOfVisitForm.form.invalid) {
-      this.submitted = true;
-      return
-    }
-    return
-    console.log(this.purposeOfVisitModel)
-    const data = {
-      username: this.purposeOfVisitModel.email,
-      password: this.purposeOfVisitModel.password,
-    }
+  getRequestAppointmentById() {
     this.common.showLoading();
-    this.service.login(data).subscribe(
+    this.service.getRequestAppointmentById(this.appointmentId).subscribe(
       (res: any) => {
         this.common.hideLoading();
-        console.log(res);
-        if (res?.status) {
-          this.submitted = false
-          this.common.presentToaster('You are successfully logged in')
-          localStorage.setItem('token', res.data.token)
-          localStorage.setItem('userDetail', JSON.stringify(res.data))
-          this.navCtrl.navigateRoot(['/tabs/home'])
-          this.purposeOfVisitModel = {
-            fullName: '',
-            email: '',
-            phoneNumber: '',
-            gender: '',
-            purposeOfVisitDescript: '',
-          }
-        }
+        this.appointmentIdData = res.data;
       },
       (err) => {
         this.common.hideLoading();
