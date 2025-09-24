@@ -1,6 +1,5 @@
 ion-header {
     background: #F05023;
-    // height: 65px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -33,54 +32,6 @@ ion-header {
     padding-left: 10px;
 }
 
-.user_icon {
-    width: 18px;
-    height: 18px;
-    border-radius: 100%;
-}
-
-.mainBackground {
-    --background: white;
-    height: 100%;
-    width: 100%;
-}
-
-.profileImg_div {
-    border: 10px solid white;
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 0px 5px 0px #00000029;
-    margin: 0px 0px 20px 0px;
-}
-
-.profileImg {
-    width: 92px;
-    height: 92px;
-    border-radius: 100%;
-}
-
-.editIcon_div {
-    border: 3px solid white;
-    height: 30px;
-    width: 30px;
-    border-radius: 100%;
-    background: #F05023;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    right: 105px;
-    top: 5px;
-}
-
-.editImg {
-    height: 13px;
-    width: 13px;
-    color: white;
-}
-
 .editIcon_div1 {
     border: 2px solid white;
     height: 25px;
@@ -96,6 +47,12 @@ ion-header {
     height: 10px;
     width: 10px;
     color: white;
+}
+
+.mainBackground {
+    --background: white;
+    height: 100%;
+    width: 100%;
 }
 
 .username_input {
@@ -115,6 +72,51 @@ ion-header {
     align-items: center;
 }
 
+.address_div {
+    width: 100%;
+    position: relative;
+    margin: 20px 0px 0px 0px;
+}
+
+.name_input {
+    width: 100%;
+    height: 50px;
+    border-radius: 9px;
+    background: #FFEEDA;
+    padding: 0px 10px 0px 15px !important;
+    font-size: 17px;
+    font-weight: 500;
+    color: black;
+    margin: 0px 0px 0px 0px;
+    box-shadow: none;
+}
+
+.search_div {
+    border: 2px solid #FF5207;
+    border-radius: 5px;
+    box-shadow: none;
+    position: absolute;
+    z-index: 9999;
+    top: 50px;
+    width: 100%;
+    margin: 0px;
+}
+
+.search_item {
+    font-size: 14px;
+    --min-height: 30px;
+    border-bottom: 1px solid #FF5207;
+    width: 100%;
+}
+
+.mainAddbutton_div {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
 .email_input {
     width: 100%;
     padding: 0px 10px 0px 15px !important;
@@ -132,7 +134,7 @@ ion-header {
     align-items: center;
 }
 
-.signIn_btn {
+.add_btn {
     --border-radius: 10px;
     --background: #FF5207;
     color: #FFF;
@@ -141,16 +143,86 @@ ion-header {
     font-style: normal;
     font-weight: 300;
     line-height: normal;
-    width: 100%;
-    margin: 50px 0px 0px 0px;
+    width: 80px;
+    margin: 0px 0px 0px 0px;
     height: 50px;
     text-transform: none;
-    --box-shadow: 0px 5px 20px 10px #2048BD33;
+    --box-shadow: none !important;
+}
+
+.addServiceSlot_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.closeCircle_icon1 {
+    position: absolute;
+    right: 5px;
+    top: 4px;
+    color: red;
+    font-size: 20px;
+    z-index: 9999;
+}
+
+.time_text {
+    background: #FFEEDA !important;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+    color: black;
+    margin: 0px;
 }
 
 .ownername_div {
     width: 100%;
     margin: 20px 0px 0px 0px;
+}
+
+.ionSelectOption {
+    background: #FFEEDA;
+    width: 100%;
+    font-size: 17px;
+    color: black;
+    font-weight: 500;
+    border-radius: 9px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 10px;
+}
+
+.textarea {
+    background: #FFEEDA !important;
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 10px 10px 10px 15px !important;
+    border-radius: 9px;
+    color: black;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 20px 0px 0px 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.uploadedDocument_text {
+    font-size: 17px;
+    font-weight: 500;
+    color: black;
+    margin: 0px 0px 20px 0px;
 }
 
 .openImg_div {
@@ -205,87 +277,7 @@ ion-header {
     margin: 5px 0px 0px 0px;
 }
 
-.uploadedDocument_text {
-    font-size: 17px;
-    font-weight: 500;
-    color: black;
-    margin: 0px 0px 20px 0px;
-}
-
-.address_div {
-    width: 100%;
-    position: relative;
-    margin: 20px 0px 0px 0px;
-}
-
-.name_input {
-    width: 100%;
-    height: 50px;
-    border-radius: 9px;
-    background: #FFEEDA;
-    // border: 1px solid #C4C4C4;
-    padding: 0px 10px 0px 15px !important;
-    // padding: 0px 20px 0px 20px !important;
-    font-size: 17px;
-    font-weight: 500;
-    color: black;
-    margin: 0px 0px 0px 0px;
-    box-shadow: none;
-}
-
-.search_div {
-    border: 2px solid #FF5207;
-    border-radius: 5px;
-    box-shadow: none;
-    position: absolute;
-    z-index: 9999;
-    top: 50px;
-    width: 100%;
-    margin: 0px;
-}
-
-.search_item {
-    font-size: 14px;
-    --min-height: 30px;
-    border-bottom: 1px solid #FF5207;
-    width: 100%;
-}
-
-.textarea {
-    background: #FFEEDA !important;
-    width: 100%;
-    outline: none;
-    border: none;
-    padding: 10px 10px 10px 15px !important;
-    border-radius: 9px;
-    color: black;
-    font-size: 17px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    margin: 20px 0px 0px 0px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.ionSelectOption {
-    background: #FFEEDA;
-    width: 100%;
-    font-size: 17px;
-    color: black;
-    font-weight: 500;
-    // border: 1px solid black;
-    border-radius: 9px;
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0px 0px 0px 0px;
-    padding: 0px 10px;
-}
-
-.add_btn {
+.signIn_btn {
     --border-radius: 10px;
     --background: #FF5207;
     color: #FFF;
@@ -294,39 +286,9 @@ ion-header {
     font-style: normal;
     font-weight: 300;
     line-height: normal;
-    width: 80px;
-    margin: 0px 0px 0px 0px;
+    width: 100%;
+    margin: 50px 0px 0px 0px;
     height: 50px;
     text-transform: none;
-    --box-shadow: none !important;
-}
-
-.addServiceSlot_div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.time_text {
-    background: #FFEEDA !important;
-    width: 100px;
-    height: 40px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    font-weight: 400;
-    color: black;
-    margin: 0px;
-}
-
-.closeCircle_icon1 {
-    position: absolute;
-    right: 5px;
-    top: 4px;
-    color: red;
-    font-size: 20px;
-    z-index: 9999;
+    --box-shadow: 0px 5px 20px 10px #2048BD33;
 }

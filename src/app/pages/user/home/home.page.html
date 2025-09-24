@@ -56,18 +56,15 @@
                 </div>
 
                 <div class="directionsImage_div">
-                  <img class="directions_image" src="../../../../assets/images/image.png" />
-                  <img class="directions_image1" src="../../../../assets/images/image-1.png" />
-                  <img class="directions_image" src="../../../../assets/images/image.png" />
+                  <img class="directions_image" *ngFor="let item of selectedService?.service_photo" [src]="item" />
+                  <!-- <img class="directions_image1" src="../../../../assets/images/image-1.png" />
+                  <img class="directions_image" src="../../../../assets/images/image.png" /> -->
                 </div>
               </div>
 
               <div style="padding: 0px 0px 10px 0px;">
                 <p class="overview_text SFProText">Overview</p>
-                <p class="loremIpsum_text SFProText">Lorem ipsum dolor sit amet consectetur. Vehicula eget posuere
-                  faucibus
-                  ultrices
-                  sit phasellus. Aliquam penatibus commodo ut volutpat pretium.</p>
+                <p class="loremIpsum_text SFProText">{{selectedService?.service_description}}</p>
                 <div class="mainAlarm_div">
                   <img src="../../../../assets/images/alarmImg.png" />
                   <div>

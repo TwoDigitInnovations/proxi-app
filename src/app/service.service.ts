@@ -70,7 +70,7 @@ export class ServiceService {
   }
 
   nearMeServicebyCategory(data: any) {
-    const url = `auth/nearMeServicebyCategory`;
+    const url = `service/nearMeServicebyCategory`;
     return this.common.post(url, data);
   }
 
@@ -117,5 +117,20 @@ export class ServiceService {
   getHistoryByProviderId(id: any) {
     const url = `appointment/getHistoryByProviderId/${id}`;
     return this.common.get(url);
+  }
+
+  createService(data: any) {
+    const url = `service/createService`;
+    return this.common.post(url, data);
+  }
+
+  getService() {
+    const url = `service/getService`;
+    return this.common.get(url,);
+  }
+
+  updateService(data: any) {
+    const url = `service/updateService`;
+    return this.common.post(url, data);
   }
 }

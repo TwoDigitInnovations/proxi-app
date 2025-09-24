@@ -187,7 +187,8 @@ export class HomePage implements OnInit {
       await this.map.setOnMarkerClickListener((event: any) => {
         console.log(event);
         this.isAlertOpen = true;
-        this.selectedService = this.nearMeServicebyCategoryData[Number(event.markerId) - 1]
+        const d: any = [event.longitude, event.latitude]
+        this.selectedService = this.nearMeServicebyCategoryData.find((f: any) => JSON.stringify(f.service_location.coordinates) === JSON.stringify(d))
         console.log(this.selectedService)
         this.selectedTime = this.selectedService?.service_slot[0];
       });
@@ -268,6 +269,7 @@ export class HomePage implements OnInit {
           this.nearMeServicebyCategoryData = res.data;
           console.log(this.nearMeServicebyCategoryData);
           res.data.forEach(async (element: any) => {
+            console.log(element)
             await this.map.addMarker({
               coordinate: {
                 lat: element.service_location.coordinates[1],
@@ -331,7 +333,9 @@ export class HomePage implements OnInit {
       date: moment(this.selectedDate, "DD/MM/YYYY").format(),
       time: moment(this.selectedTime, 'HH:mm').format("h:mm A"),
       service: this.selectedService?._id,
-      full_date: moment(fullDate, "DD/MM/YYYY,HH:mm").format()
+      full_date: moment(fullDate, "DD/MM/YYYY,HH:mm").format(),
+      service_provider: this.selectedService?.user?._id,
+      service_ref: this.selectedService?._id
     }
     console.log(data)
     console.log(this.payAmountModel)

@@ -15,7 +15,7 @@
       <div class="card" *ngFor="let item of appointmentByUserData" (click)="myAppointmentsDetails(item?._id)">
         <div class="mainNotifications_div">
           <div class="notifications_div">
-            <img class="notificationsIcon" [src]="item?.service?.profile" />
+            <img class="notificationsIcon" [src]="item?.service_provider?.profile" />
           </div>
           <div>
             <p class="date_text Inter">{{moment(item?.date).format("DD MMM, YYYY")}}</p>

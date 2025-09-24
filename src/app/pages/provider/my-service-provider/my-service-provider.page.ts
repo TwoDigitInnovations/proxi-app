@@ -12,20 +12,16 @@ declare var google: any;
   styleUrls: ['./my-service-provider.page.scss'],
 })
 export class MyServiceProviderPage implements OnInit {
-  profileModel: any = {
-    name: "",
-    email: "",
-    phoneNumber: "",
-    document: [],
+  serviceModel: any = {
     service_name: "",
     address: "",
     service_slot: [],
     category: "",
     service_description: "",
+    service_photo: [],
   }
   submitted: any = false;
   isEdit: any = false;
-  imagesSource: any = {};
   profileData: any = {};
 
   showLocation: any = false;
@@ -35,6 +31,8 @@ export class MyServiceProviderPage implements OnInit {
   GoogleAutocomplete: any;
   categoryData: any = [];
   serviceSlotData: any = [];
+
+  serviceId: any = "";
 
   constructor(
     private navCtrl: NavController,
@@ -49,7 +47,7 @@ export class MyServiceProviderPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.getProfile();
+    this.getService();
     this.getCategory();
   }
 
@@ -57,63 +55,20 @@ export class MyServiceProviderPage implements OnInit {
     this.navCtrl.back();
   }
 
-  takePicture = async () => {
-    const image: any = await Camera.getPhoto({
-      quality: 50,
-      allowEditing: false,
-      resultType: CameraResultType.Uri,
-      source: CameraSource.Prompt,
-
-    });
-    const response = await fetch(image.webPath);
-    const blob = await response.blob();
-    const imageUrl = image.webPath;
-    const fileType = blob?.type.split('/')[1];
-
-    if (!['jpeg', 'png', 'jpg'].includes(fileType)) {
-      this.common.presentToaster('Invalid file type. Only JPG, JPEG, and PNG are allowed.')
-      return;
-    }
-
-    const fileSizeKB = blob.size / 1024;
-    const fileSizeMB = fileSizeKB / 1024;
-
-    if (fileSizeMB > 2) {
-      this.common.presentToaster('The image size exceeds the 2 MB limit. Please select a smaller image.')
-      return;
-    }
-    const name = `${new Date().getTime()}.${fileType}`;
-
-    const reader: any = new FileReader();
-    reader.onloadend = () => {
-      const base64Data = reader.result.split(',')[1];
-      this.imagesSource = {
-        blob,
-        imageUrl,
-        name,
-        base64Data: `data:${blob?.type};base64,${base64Data}`
-      };
-      console.log(this.imagesSource)
-    };
-    reader.readAsDataURL(blob);
-  };
-
-  getProfile() {
+  getService() {
     this.common.showLoading();
-    this.service.getProfile().subscribe(
+    this.service.getService().subscribe(
       (res: any) => {
         this.common.hideLoading();
         if (res.status) {
+          this.serviceId = res.data._id;
           this.profileData = res.data
-          this.profileModel = {
-            name: res.data.name,
-            email: res.data.email,
-            phoneNumber: res.data.phone,
+          this.serviceModel = {
             service_name: res.data.service_name,
             address: res.data.address,
             category: res.data.category,
             service_description: res.data.service_description,
-            document: res.data.document.map((f: any) => ({
+            service_photo: res.data.service_photo.map((f: any) => ({
               base64Data: f
             }))
           }
@@ -126,9 +81,7 @@ export class MyServiceProviderPage implements OnInit {
           if (res.data.service_slot.length > 0) {
             this.serviceSlotData = res.data.service_slot
           }
-          console.log(res.data?.profile)
-          this.imagesSource = { base64Data: res.data?.profile };
-          localStorage.setItem('userDetail', JSON.stringify(res?.data))
+          // localStorage.setItem('userDetail', JSON.stringify(res?.data))
         }
       },
       (err) => {
@@ -139,45 +92,86 @@ export class MyServiceProviderPage implements OnInit {
     );
   }
 
-  updateProfile(profileForm: any) {
-    if (profileForm.form.invalid) {
+  createService(serviceForm: any) {
+    if (serviceForm.form.invalid) {
       this.submitted = true
       return
     }
     const data = new FormData();
-    data.append('name', this.profileModel.name);
-    data.append('email', this.profileModel.email);
-    data.append('phone', this.profileModel.phoneNumber);
-    data.append('service_name', this.profileModel.service_name);
+    data.append('service_name', this.serviceModel.service_name);
     data.append('service_location', JSON.stringify(this.location));
-    data.append('service_description', this.profileModel.service_description);
+    data.append('service_description', this.serviceModel.service_description);
     data.append('service_slot', JSON.stringify(this.serviceSlotData));
-    data.append('category', this.profileModel.category);
-    data.append('address', this.profileModel.address);
+    data.append('category', this.serviceModel.category);
+    data.append('address', this.serviceModel.address);
 
     let oldImages: any = []
-    if (this.imagesSource.blob) {
-      data.append('profile', this.imagesSource.blob, this.imagesSource.name);
-    }
-    if (this.profileModel.document && this.profileModel.document.length > 0) {
-      this.profileModel.document.forEach((amenity: any, index: any) => {
+    if (this.serviceModel.service_photo && this.serviceModel.service_photo.length > 0) {
+      this.serviceModel.service_photo.forEach((amenity: any, index: any) => {
         if (amenity.blob) {
-          data.append(`document`, amenity.blob, amenity.name);
+          data.append(`service_photo`, amenity.blob, amenity.name);
         } else {
           oldImages.push(amenity.base64Data)
         }
       });
     }
-    data.append('oldImages', JSON.stringify(oldImages))
+    data.append('oldImages', JSON.stringify(oldImages));
 
     this.common.showLoading();
-    this.service.updateProfile(data).subscribe(
+    this.service.createService(data).subscribe(
       (res: any) => {
         this.common.hideLoading();
         if (res.status) {
-          this.getProfile()
+          this.getService()
           this.submitted = false
-          this.isEdit = false
+          this.isEdit = false;
+          this.serviceId = "";
+        }
+        // this.common.presentToaster(res?.data?.message)
+      },
+      (err) => {
+        this.common.hideLoading();
+        console.log(err);
+        this.common.presentToaster(err?.error?.message);
+      }
+    );
+  }
+
+  updateService(serviceForm: any) {
+    if (serviceForm.form.invalid) {
+      this.submitted = true
+      return
+    }
+    const data = new FormData();
+    data.append('service_name', this.serviceModel.service_name);
+    data.append('service_location', JSON.stringify(this.location));
+    data.append('service_description', this.serviceModel.service_description);
+    data.append('service_slot', JSON.stringify(this.serviceSlotData));
+    data.append('category', this.serviceModel.category);
+    data.append('address', this.serviceModel.address);
+    data.append('id', this.serviceId);
+
+    let oldImages: any = []
+    if (this.serviceModel.service_photo && this.serviceModel.service_photo.length > 0) {
+      this.serviceModel.service_photo.forEach((amenity: any, index: any) => {
+        if (amenity.blob) {
+          data.append(`service_photo`, amenity.blob, amenity.name);
+        } else {
+          oldImages.push(amenity.base64Data)
+        }
+      });
+    }
+    data.append('oldImages', JSON.stringify(oldImages));
+
+    this.common.showLoading();
+    this.service.updateService(data).subscribe(
+      (res: any) => {
+        this.common.hideLoading();
+        if (res.status) {
+          this.getService()
+          this.submitted = false
+          this.isEdit = false;
+          this.serviceId = "";
         }
         // this.common.presentToaster(res?.data?.message)
       },
@@ -219,15 +213,15 @@ export class MyServiceProviderPage implements OnInit {
     const reader: any = new FileReader();
     reader.onloadend = () => {
       const base64Data = reader.result.split(',')[1];
-      if (this.profileModel.document?.length > 0) {
-        this.profileModel.document.push({
+      if (this.serviceModel.service_photo?.length > 0) {
+        this.serviceModel.service_photo.push({
           blob,
           imageUrl,
           name,
           base64Data: `data:${blob?.type};base64,${base64Data}`
         });
       } else {
-        this.profileModel.document = [{
+        this.serviceModel.service_photo = [{
           blob,
           imageUrl,
           name,
@@ -239,37 +233,36 @@ export class MyServiceProviderPage implements OnInit {
   };
 
   removeImage(item: any) {
-    this.profileModel.document = this.profileModel.document.filter((f: any) => f !== item)
+    this.serviceModel.service_photo = this.serviceModel.service_photo.filter((f: any) => f !== item)
   }
 
   UpdateSearchResults(e: any) {
-    console.log(e)
-    if (this.profileModel.address == '') {
+    // console.log(e)
+    if (this.serviceModel.address == '') {
       this.autocompleteItems = [];
       return;
     }
     this.GoogleAutocomplete.getPlacePredictions({ input: e },
       (predictions: any, status: any) => {
-        console.log(predictions)
-        console.log(status)
+        // console.log(predictions)
+        // console.log(status)
         this.showLocation = true
         this.autocompleteItems = predictions;
-        console.log("location========", this.autocompleteItems)
+        // console.log("location========", this.autocompleteItems)
       });
   }
 
   async SelectSearchResult(e: any) {
-    console.log(e)
-    this.profileModel.address = e.description
+    // console.log(e)
+    this.serviceModel.address = e.description
     this.showLocation = false
     this.GoogleGeocoder.geocode({ 'address': e.description }, (res: any) => {
-      console.log(res)
-      console.log(res[0].geometry.location.lat())
+      // console.log(res)
+      // console.log(res[0].geometry.location.lat())
       this.location = {
         lat: res[0].geometry.location.lat(),
         lng: res[0].geometry.location.lng()
       };
-      console.log(this.location)
     })
   }
 
@@ -279,7 +272,6 @@ export class MyServiceProviderPage implements OnInit {
       (res: any) => {
         this.common.hideLoading();
         if (res.status) {
-          console.log(res);
           this.categoryData = res.data;
         }
       },
@@ -296,15 +288,12 @@ export class MyServiceProviderPage implements OnInit {
   }
 
   selectedServiceSlot(e: any) {
-    console.log(e)
     // this.utilitiess = this.selectutilities.filter((f: any) => e.includes(f.name));
-    // console.log(this.utilitiess);
   }
 
   addServiceSlot() {
-    this.serviceSlotData.push(this.profileModel.service_slot);
-    console.log(this.serviceSlotData)
-    this.profileModel.service_slot = ''
+    this.serviceSlotData.push(this.serviceModel.service_slot);
+    this.serviceModel.service_slot = '';
   }
 
   removeServiceSlotImage(item: any) {
