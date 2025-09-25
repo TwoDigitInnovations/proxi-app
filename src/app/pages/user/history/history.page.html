@@ -9,7 +9,7 @@
 </ion-header>
 
 <ion-content class="mainBackground">
-  <div style="padding: 20px;">
+  <div style="padding: 20px;" *ngIf="historyData.length >0">
     <div class="mainCard">
       <div class="card" *ngFor="let item of historyData">
         <div class="mainNotifications_div">
@@ -18,11 +18,14 @@
           </div>
           <div>
             <p class="date_text Inter">{{moment(item?.date).format("DD MMM, YYYY")}}</p>
-            <!-- 8th July, 2023 -->
             <p class="andrew_text Inter">{{item?.name}}</p>
           </div>
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="noValidation_div" *ngIf="historyData.length === 0">
+    <p class="noValidation_text">No History Available</p>
   </div>
 </ion-content>

@@ -234,6 +234,18 @@ ion-header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+.openImg_div1 {
+    border: 2px dashed black;
+    border-radius: 10px;
+    height: 120px;
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .closeCircle_icon {

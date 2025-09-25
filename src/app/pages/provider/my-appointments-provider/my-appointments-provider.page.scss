@@ -1,6 +1,5 @@
 ion-header {
     background: white;
-    // height: 65px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -52,7 +51,6 @@ ion-header {
     align-items: center;
     width: 100%;
     gap: 10px;
-    // border-bottom: 1px solid #363636;
     padding: 15px;
     margin: 0px 0px 0px 0px;
 }
@@ -82,6 +80,7 @@ ion-header {
     font-size: 10px;
     color: #363636;
     margin: 5px 0px 0px 0px;
+    width: 140px;
 }
 
 .seeDetails_btn {
@@ -96,11 +95,21 @@ ion-header {
     text-transform: capitalize;
     margin: 0px;
     --box-shadow: none !important;
+}
 
-    // ion-button {
-    //     &::part(native) {
-    //         --border: 2px solid #363636;
-    //         --border-radius: 5px;
-    //     }
-    // }
+.noValidation_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    padding: 0px 20px;
+}
+
+.noValidation_text {
+    font-size: 24px;
+    font-weight: 700;
+    color: black;
+    text-align: center;
+    margin: 0px;
 }

@@ -10,7 +10,7 @@
 <ion-content class="mainBackground">
   <div style="padding: 20px;">
     <div class="center">
-      <img class="appointmentsDetails_img" [src]="appointmentIdData?.service?.profile" />
+      <img class="appointmentsDetails_img" [src]="appointmentIdData?.service_provider?.profile" />
     </div>
     <div class="appointmentsDetails_card">
       <div class="name_div">
@@ -33,9 +33,9 @@
         <p class="louisLitt_text">{{appointmentIdData?.time}}</p>
       </div>
 
-      <div class="phoneNo_div">
-        <p class="name_text">Purpose of Visit :</p>
-        <p class="louisLitt_text">{{appointmentIdData?.purpose_of_visit}}</p>
+      <div class="purposeOfVisit_div">
+        <p class="purposeOfVisit_text">Purpose of Visit :</p>
+        <p class="purposeOfVisit_desc_text">{{appointmentIdData?.purpose_of_visit}}</p>
       </div>
     </div>
 

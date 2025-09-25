@@ -4,7 +4,6 @@
       <ion-icon class="back_icon" (click)="goBack()" name="chevron-back-outline"></ion-icon>
       <p class="mainTitle_text PPNeueMontreal">Profile</p>
     </div>
-    <!-- <img class="user_icon" src="../../../../assets/images/userIcon.png" /> -->
     <div class="editIcon_div1" *ngIf="!isEdit" (click)="isEdit= true">
       <img class="editImg1" src="../../../../assets/images/editImg.png" />
     </div>
@@ -17,7 +16,6 @@
       <div class="profileImg_div">
         <ion-avatar class="profileImg">
           <img class="profileImg" [src]="imagesSource.base64Data" />
-          <!-- src="../../../../assets/images/profileImg.png" -->
         </ion-avatar>
         <div class="editIcon_div" *ngIf="isEdit" (click)="takePicture()">
           <img class="editImg" src="../../../../assets/images/editImg.png" />

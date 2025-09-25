@@ -85,10 +85,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/provider/my-appointments-provider/my-appointments-provider.module').then(m => m.MyAppointmentsProviderPageModule)
   },
   {
-    path: 'service-provider',
-    loadChildren: () => import('./pages/provider/service-provider/service-provider.module').then(m => m.ServiceProviderPageModule)
-  },
-  {
     path: 'my-appointments-details-provider',
     loadChildren: () => import('./pages/provider/my-appointments-details-provider/my-appointments-details-provider.module').then(m => m.MyAppointmentsDetailsProviderPageModule)
   },
@@ -98,11 +94,11 @@ const routes: Routes = [
   },
   {
     path: 'history-provider',
-    loadChildren: () => import('./pages/provider/history-provider/history-provider.module').then( m => m.HistoryProviderPageModule)
+    loadChildren: () => import('./pages/provider/history-provider/history-provider.module').then(m => m.HistoryProviderPageModule)
   },
   {
     path: 'my-service-provider',
-    loadChildren: () => import('./pages/provider/my-service-provider/my-service-provider.module').then( m => m.MyServiceProviderPageModule)
+    loadChildren: () => import('./pages/provider/my-service-provider/my-service-provider.module').then(m => m.MyServiceProviderPageModule)
   },
 ];
 @NgModule({

@@ -80,13 +80,12 @@
         <p class="uploadedDocument_text">Uploaded Service Photo</p>
         <ion-grid class="pad_0">
           <ion-row>
-            <ion-col size="6" class="center openImg_div" style=" position:relative;"
-              *ngFor="let item of serviceModel.service_photo">
+            <ion-col size="6" class="center openImg_div" *ngFor="let item of serviceModel.service_photo">
               <ion-icon *ngIf="isEdit" name="close-circle" class="closeCircle_icon"
                 (click)="removeImage(item)"></ion-icon>
               <img class="profile_img1" [src]="item?.base64Data || item?.imageUrl" />
             </ion-col>
-            <ion-col size="6" class="openImg_div" *ngIf="isEdit">
+            <ion-col size="6" class="openImg_div1" *ngIf="isEdit">
               <div class="center flex_col">
                 <div class="editIcon_div2" (click)="takeMultiPicture()">
                   <ion-icon class="editIcon" name="add-outline"></ion-icon>

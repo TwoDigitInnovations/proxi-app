@@ -1,9 +1,3 @@
-<!-- <ion-header>
-  <ion-toolbar>
-    <ion-title>payment-success</ion-title>
-  </ion-toolbar>
-</ion-header> -->
-
 <ion-content class="mainBackground">
   <div style="padding: 20px;">
     <div class="center flex_col">
@@ -17,7 +11,7 @@
           <img class="user_image" [src]="appointmentIdData?.service_provider?.profile" />
         </div>
         <p class="borderDashed"></p>
-        <div style="position: absolute; top: 185px;">
+        <div class="mainSuccess_div">
           <ion-grid class="pad_0">
             <ion-row>
               <ion-col size="6" style="padding:0px 5px 0px 0px;">
@@ -28,11 +22,11 @@
                 <p class="name_text Poppins">Ticket Number</p>
                 <p class="surendhar_text Poppins">{{appointmentIdData?.ticketNumber}}</p>
               </ion-col>
-              <ion-col size="6" style="padding:0px 5px 0px 0px; margin-top: 10px;">
+              <ion-col size="6" class="mobile_div">
                 <p class="name_text Poppins">MOBILE</p>
                 <p class="surendhar_text Poppins">{{appointmentIdData?.phone}}</p>
               </ion-col>
-              <ion-col size="6" style="padding:0px 0px 0px 5px; margin-top: 10px;">
+              <ion-col size="6" class="gender_div">
                 <p class="name_text Poppins">Gender</p>
                 <p class="surendhar_text Poppins">{{appointmentIdData?.gender}}</p>
               </ion-col>

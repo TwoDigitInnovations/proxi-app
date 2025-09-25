@@ -1,6 +1,5 @@
 ion-header {
     background: #F05023;
-    // height: 65px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -162,6 +161,18 @@ ion-header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+.openImg_div1 {
+    border: 2px dashed black;
+    border-radius: 10px;
+    height: 120px;
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .closeCircle_icon {
@@ -223,9 +234,7 @@ ion-header {
     height: 50px;
     border-radius: 9px;
     background: #FFEEDA;
-    // border: 1px solid #C4C4C4;
     padding: 0px 10px 0px 15px !important;
-    // padding: 0px 20px 0px 20px !important;
     font-size: 17px;
     font-weight: 500;
     color: black;
@@ -275,7 +284,6 @@ ion-header {
     font-size: 17px;
     color: black;
     font-weight: 500;
-    // border: 1px solid black;
     border-radius: 9px;
     height: 50px;
     display: flex;

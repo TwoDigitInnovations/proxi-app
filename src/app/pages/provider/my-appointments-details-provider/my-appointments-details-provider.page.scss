@@ -1,6 +1,5 @@
 ion-header {
     background: white;
-    // height: 65px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -83,6 +82,25 @@ ion-header {
     align-items: center;
     gap: 10px;
     margin-top: 20px;
+}
+
+.purposeOfVisit_div {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.purposeOfVisit_text {
+    font-weight: 600;
+    font-size: 14px;
+    color: #363636;
+    margin: 0px;
+}
+
+.purposeOfVisit_desc_text {
+    font-weight: 500;
+    font-size: 14px;
+    color: #363636;
+    margin: 10px 0px 0px 0px;
 }
 
 .next_btn {

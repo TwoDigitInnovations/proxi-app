@@ -46,7 +46,6 @@ export class MyAppointmentsDetailsPage implements OnInit {
   }
 
   purposeOfVisit() {
-    // this.navCtrl.navigateForward(['/tabs/purpose-of-visit'])
     this.navCtrl.navigateForward(['/tabs/purpose-of-visit'], {
       queryParams: { appointment_id: this.appointmentId },
     })

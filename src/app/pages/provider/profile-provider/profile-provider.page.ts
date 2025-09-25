@@ -144,6 +144,22 @@ export class ProfileProviderPage implements OnInit {
       this.submitted = true
       return
     }
+
+    if (this.serviceSlotData?.length === 0) {
+      this.common.presentToaster('Service slot is required.')
+      return
+    }
+
+    if (this.profileModel.category === '') {
+      this.common.presentToaster('Category is required.')
+      return
+    }
+
+    if (this.profileModel.document?.length === 0) {
+      this.common.presentToaster('Document is required.')
+      return
+    }
+
     const data = new FormData();
     data.append('name', this.profileModel.name);
     data.append('email', this.profileModel.email);

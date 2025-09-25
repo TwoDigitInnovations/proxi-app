@@ -21,13 +21,14 @@
     <div class="w_100">
       <div class="nextAppointments_div">
         <p class="nextAppointments_text">Next Appointments</p>
-        <p class="seeAll_text" (click)="myAppointmentsProvider()">See all</p>
+        <p class="seeAll_text" (click)="myAppointmentsProvider()" *ngIf="appointmentByProviderData.length >0">See all
+        </p>
       </div>
-      <div class="mainCard">
+      <div class="mainCard" *ngIf="appointmentByProviderData.length >0">
         <div class="w_100" *ngFor="let item of appointmentByProviderData">
           <div class="nextAppointments_card">
             <div class="nextAppointmentscard_div">
-              <img class="user_img1" [src]="item?.service?.profile" />
+              <img class="user_img1" [src]="item?.user?.profile" />
               <div>
                 <p class="rachel_text">{{item?.name}}</p>
                 <p class="time_text">{{item?.time}}</p>
@@ -36,6 +37,10 @@
             <p class="appointment_text">{{item?.purpose_of_visit}}</p>
           </div>
         </div>
+      </div>
+
+      <div class="noValidation_div" *ngIf="appointmentByProviderData.length === 0">
+        <p class="noValidation_text">No Appointments</p>
       </div>
     </div>
 
@@ -70,13 +75,14 @@
     <div class="w_100">
       <div class="nextAppointments_div">
         <p class="nextAppointments_text">Appointments</p>
-        <p class="seeAll_text" (click)="myAppointmentsProvider()">See all</p>
+        <p class="seeAll_text" (click)="myAppointmentsProvider()" *ngIf="appointmentByProviderData.length >0">See all
+        </p>
       </div>
 
-      <div class="appointments_card">
+      <div class="appointments_card" *ngIf="appointmentByProviderData.length >0">
         <div class="appointmentsCard_div" *ngFor="let item of appointmentByProviderData">
           <div class="travisTanner_div">
-            <img class="appointmentsUser_img" [src]="item?.service?.profile" />
+            <img class="appointmentsUser_img" [src]="item?.user?.profile" />
             <div>
               <p class="travisTanner_text">{{item?.name}}</p>
               <p class="businessMeeting_text">{{item?.purpose_of_visit}}</p>
@@ -84,6 +90,10 @@
           </div>
           <ion-button class="seeDetails_btn" (click)="myAppointmentsDetailsProvider(item?._id)">See Details</ion-button>
         </div>
+      </div>
+
+      <div class="noValidation_div1" *ngIf="appointmentByProviderData.length === 0">
+        <p class="noValidation_text1">No Appointments</p>
       </div>
     </div>
 

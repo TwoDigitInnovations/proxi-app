@@ -48,10 +48,6 @@ const routes: Routes = [
         loadChildren: () => import('../pages/provider/my-appointments-provider/my-appointments-provider.module').then(m => m.MyAppointmentsProviderPageModule)
       },
       {
-        path: 'service-provider',
-        loadChildren: () => import('../pages/provider/service-provider/service-provider.module').then(m => m.ServiceProviderPageModule)
-      },
-      {
         path: 'my-appointments-details-provider',
         loadChildren: () => import('../pages/provider/my-appointments-details-provider/my-appointments-details-provider.module').then(m => m.MyAppointmentsDetailsProviderPageModule)
       },

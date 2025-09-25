@@ -89,8 +89,6 @@ export class HomePage implements OnInit {
   }
 
   ionViewWillEnter() {
-
-    // this.requestAndGet();
     const d = this.getLocation().then((res) => {
       console.log(res)
       this.location = res;
@@ -102,30 +100,6 @@ export class HomePage implements OnInit {
       }
     });
     console.log(d)
-
-    // setTimeout(async () => {
-    //   await this.loandMap();
-    // }, 1000);
-  }
-
-  // async ngAfterViewInit() {
-  //   setTimeout(async () => {
-  //     await this.loandMap();
-  //   }, 1000);
-  // }
-
-  async requestAndGet() {
-    try {
-      await Geolocation.requestPermissions(); // prompts the user on device
-
-      const position = await Geolocation.getCurrentPosition();
-      console.log('Latitude:', position.coords.latitude);
-      console.log('Longitude:', position.coords.longitude);
-      return position;
-    } catch (err) {
-      console.error('Geolocation error:', err);
-      throw err;
-    }
   }
 
   async getLocation() {
@@ -135,7 +109,6 @@ export class HomePage implements OnInit {
     try {
       if (Capacitor.getPlatform() === 'web') {
         console.log(Capacitor.getPlatform())
-        // fallback to browser geolocation
         return new Promise<GeolocationPosition>((resolve, reject) => {
           if (!('geolocation' in navigator)) {
             reject(new Error('Geolocation not supported in this browser'));
@@ -170,8 +143,6 @@ export class HomePage implements OnInit {
           center: {
             lat: locationLatAndLng.coords.latitude, // San Francisco
             lng: locationLatAndLng.coords.longitude,
-            // lat: this.location.lat,
-            // lng: this.location.lng,
           },
           zoom: 12,
         },
@@ -265,7 +236,6 @@ export class HomePage implements OnInit {
         this.common.hideLoading();
         console.log(res);
         if (res?.status) {
-          // this.submitted = false;
           this.nearMeServicebyCategoryData = res.data;
           console.log(this.nearMeServicebyCategoryData);
           res.data.forEach(async (element: any) => {
@@ -277,9 +247,6 @@ export class HomePage implements OnInit {
               },
             });
           });
-
-          // await this.mapRef.enableClustering();
-
         }
       },
       (err) => {
@@ -311,18 +278,12 @@ export class HomePage implements OnInit {
   }
 
   payAmount(payAmountForm: any) {
-    // this.payAmountOpen = false;
-    // setTimeout(() => {
-    //   this.navCtrl.navigateForward(['/payment-success'])
-    // }, 1000);
-    // return
     if (payAmountForm.form.invalid) {
       this.submitted = true;
       return
     }
 
     const fullDate = this.selectedDate + "," + this.selectedTime
-
 
     const data = {
       name: this.payAmountModel.name,
@@ -339,7 +300,6 @@ export class HomePage implements OnInit {
     }
     console.log(data)
     console.log(this.payAmountModel)
-    // return
     this.common.showLoading();
     this.service.createAppointment(data).subscribe(
       (res: any) => {
@@ -348,7 +308,6 @@ export class HomePage implements OnInit {
         if (res?.status) {
           this.payAmountOpen = false;
           this.submitted = false
-          // this.common.presentToaster(res?.data?.message)
           this.payAmountModel = {
             name: '',
             email: '',
@@ -357,7 +316,6 @@ export class HomePage implements OnInit {
             purpose_of_visit: '',
           }
           setTimeout(() => {
-            // this.navCtrl.navigateForward(['/payment-success'])
             this.navCtrl.navigateForward(['/payment-success'], {
               queryParams: { appointment_id: res.data._id },
             });

@@ -1,5 +1,4 @@
 .mainBackground {
-    // --background: white;
     --background: linear-gradient(180.1deg, #FFB99B 0.09%, #FFFFFF 15.14%);
     height: 100%;
     width: 100%;
@@ -39,9 +38,6 @@
     background-size: 100% 100% !important;
     background-repeat: no-repeat !important;
     position: relative;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
     padding: 20px;
 }
 
@@ -59,6 +55,11 @@
     top: 152px;
 }
 
+.mainSuccess_div {
+    position: absolute;
+    top: 185px;
+}
+
 .name_text {
     font-weight: 500;
     font-size: 15px;
@@ -71,6 +72,16 @@
     font-size: 16px;
     color: black;
     margin: 0px;
+}
+
+.mobile_div {
+    padding: 0px 5px 0px 0px;
+    margin-top: 10px;
+}
+
+.gender_div {
+    padding: 0px 0px 0px 5px;
+    margin-top: 10px;
 }
 
 .goToHome_btn {

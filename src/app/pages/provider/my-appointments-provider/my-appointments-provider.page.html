@@ -7,12 +7,12 @@
 </ion-header>
 
 <ion-content class="mainBackground">
-  <div style="padding: 20px;">
+  <div style="padding: 20px;" *ngIf="appointmentByProviderData.length >0">
     <div class="mainCard">
       <div class="appointmentsCard" *ngFor="let item of appointmentByProviderData">
         <div class="appointmentsCard_div">
           <div class="travisTanner_div">
-            <img class="appointmentsUser_img" [src]="item?.service?.profile" />
+            <img class="appointmentsUser_img" [src]="item?.user?.profile" />
             <div>
               <p class="travisTanner_text">{{item?.name}}</p>
               <p class="businessMeeting_text">{{item?.purpose_of_visit}}</p>
@@ -22,5 +22,9 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="noValidation_div" *ngIf="appointmentByProviderData.length === 0">
+    <p class="noValidation_text">No Appointments</p>
   </div>
 </ion-content>

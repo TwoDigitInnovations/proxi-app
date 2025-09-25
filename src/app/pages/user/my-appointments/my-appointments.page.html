@@ -4,13 +4,12 @@
       <p class="mainTitle_text PPNeueMontreal">My Appointments</p>
     </div>
     <img class="user_icon" *ngIf="userDetail?.profile" [src]="userDetail?.profile" />
-    <!-- <img class="user_icon1" *ngIf="!userDetail?.profile" src="../../../../assets/images/userIcon.png" /> -->
     <ion-icon class="user_icon1" *ngIf="!userDetail?.profile" name="person-outline"></ion-icon>
   </div>
 </ion-header>
 
 <ion-content class="mainBackground">
-  <div style="padding: 20px;">
+  <div style="padding: 20px;" *ngIf="appointmentByUserData.length >0">
     <div class="mainCard">
       <div class="card" *ngFor="let item of appointmentByUserData" (click)="myAppointmentsDetails(item?._id)">
         <div class="mainNotifications_div">
@@ -19,11 +18,14 @@
           </div>
           <div>
             <p class="date_text Inter">{{moment(item?.date).format("DD MMM, YYYY")}}</p>
-            <!-- 8th July, 2023  -->
             <p class="andrew_text Inter">{{item?.name}}</p>
           </div>
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="noValidation_div" *ngIf="appointmentByUserData.length === 0">
+    <p class="noValidation_text">No Appointments</p>
   </div>
 </ion-content>

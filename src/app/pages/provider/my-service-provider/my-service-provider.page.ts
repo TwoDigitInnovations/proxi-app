@@ -81,7 +81,6 @@ export class MyServiceProviderPage implements OnInit {
           if (res.data.service_slot.length > 0) {
             this.serviceSlotData = res.data.service_slot
           }
-          // localStorage.setItem('userDetail', JSON.stringify(res?.data))
         }
       },
       (err) => {
@@ -97,6 +96,22 @@ export class MyServiceProviderPage implements OnInit {
       this.submitted = true
       return
     }
+
+    if (this.serviceSlotData?.length === 0) {
+      this.common.presentToaster('Service slot is required.')
+      return
+    }
+
+    if (this.serviceModel.category === '') {
+      this.common.presentToaster('Category is required.')
+      return
+    }
+
+    if (this.serviceModel.service_photo?.length === 0) {
+      this.common.presentToaster('Service photo is required.')
+      return
+    }
+
     const data = new FormData();
     data.append('service_name', this.serviceModel.service_name);
     data.append('service_location', JSON.stringify(this.location));
@@ -142,6 +157,22 @@ export class MyServiceProviderPage implements OnInit {
       this.submitted = true
       return
     }
+
+    if (this.serviceSlotData?.length === 0) {
+      this.common.presentToaster('Service slot is required.')
+      return
+    }
+
+    if (this.serviceModel.category === '') {
+      this.common.presentToaster('Category is required.')
+      return
+    }
+
+    if (this.serviceModel.service_photo?.length === 0) {
+      this.common.presentToaster('Service photo is required.')
+      return
+    }
+
     const data = new FormData();
     data.append('service_name', this.serviceModel.service_name);
     data.append('service_location', JSON.stringify(this.location));
@@ -162,7 +193,8 @@ export class MyServiceProviderPage implements OnInit {
       });
     }
     data.append('oldImages', JSON.stringify(oldImages));
-
+    console.log(this.serviceModel)
+    // return
     this.common.showLoading();
     this.service.updateService(data).subscribe(
       (res: any) => {
@@ -237,28 +269,21 @@ export class MyServiceProviderPage implements OnInit {
   }
 
   UpdateSearchResults(e: any) {
-    // console.log(e)
     if (this.serviceModel.address == '') {
       this.autocompleteItems = [];
       return;
     }
     this.GoogleAutocomplete.getPlacePredictions({ input: e },
       (predictions: any, status: any) => {
-        // console.log(predictions)
-        // console.log(status)
         this.showLocation = true
         this.autocompleteItems = predictions;
-        // console.log("location========", this.autocompleteItems)
       });
   }
 
   async SelectSearchResult(e: any) {
-    // console.log(e)
     this.serviceModel.address = e.description
     this.showLocation = false
     this.GoogleGeocoder.geocode({ 'address': e.description }, (res: any) => {
-      // console.log(res)
-      // console.log(res[0].geometry.location.lat())
       this.location = {
         lat: res[0].geometry.location.lat(),
         lng: res[0].geometry.location.lng()

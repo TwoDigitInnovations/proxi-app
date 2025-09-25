@@ -16,7 +16,6 @@
       <div class="profileImg_div">
         <ion-avatar class="profileImg">
           <img class="profileImg" [src]="imagesSource.base64Data" />
-          <!-- src="../../../../assets/images/profileImg.png" -->
         </ion-avatar>
         <div class="editIcon_div" *ngIf="isEdit" (click)="takePicture()">
           <img class="editImg" src="../../../../assets/images/editImg.png" />
@@ -111,13 +110,12 @@
         <p class="uploadedDocument_text">Uploaded Document</p>
         <ion-grid class="pad_0">
           <ion-row>
-            <ion-col size="6" class="center openImg_div" style=" position:relative;"
-              *ngFor="let item of profileModel.document">
+            <ion-col size="6" class="center openImg_div" *ngFor="let item of profileModel.document">
               <ion-icon name="close-circle" class="closeCircle_icon" (click)="removeImage(item)"
                 *ngIf="isEdit"></ion-icon>
               <img class="profile_img1" [src]="item?.base64Data || item?.imageUrl" />
             </ion-col>
-            <ion-col size="6" class="openImg_div" *ngIf="isEdit">
+            <ion-col size="6" class="openImg_div1" *ngIf="isEdit">
               <div class="center flex_col">
                 <div class="editIcon_div2" (click)="takeMultiPicture()">
                   <ion-icon class="editIcon" name="add-outline"></ion-icon>

@@ -57,7 +57,6 @@ export class MyAppointmentsDetailsProviderPage implements OnInit {
       id: this.appointmentIdData?._id
     }
     console.log(data)
-    // return
     this.common.showLoading();
     this.service.updateAppointmentStatusByProvider(data).subscribe(
       (res: any) => {

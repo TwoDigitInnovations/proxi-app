@@ -1,6 +1,5 @@
 ion-header {
     background: #F05023;
-    // height: 65px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -94,4 +93,21 @@ ion-header {
     font-weight: 400;
     color: #FFFFFF;
     margin: 4px 0px 0px 0px;
+}
+
+.noValidation_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    padding: 0px 20px;
+}
+
+.noValidation_text {
+    font-size: 24px;
+    font-weight: 700;
+    color: black;
+    text-align: center;
+    margin: 0px;
 }

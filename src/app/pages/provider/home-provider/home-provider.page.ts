@@ -68,7 +68,6 @@ export class HomeProviderPage implements OnInit {
     const data = new FormData();
     data.append('isAvailable', this.isAvailable);
     console.log(data)
-    // return
     this.common.showLoading();
     this.service.updateProfile(data).subscribe(
       (res: any) => {
