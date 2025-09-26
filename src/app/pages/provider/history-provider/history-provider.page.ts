@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { InfiniteScrollCustomEvent, NavController } from '@ionic/angular';
 import { CommonService } from 'src/app/common.service';
 import { ServiceService } from 'src/app/service.service';
 import * as moment from 'moment';
@@ -14,6 +14,10 @@ export class HistoryProviderPage implements OnInit {
   userDetail: any;
   historyData: any = [];
   moment: any = moment;
+
+  currentdata: any = [];
+  limit: any = 10;
+  page: any = 1;
 
   constructor(
     private navCtrl: NavController,
@@ -36,13 +40,36 @@ export class HistoryProviderPage implements OnInit {
     }
   }
 
-  getHistoryByProviderId() {
-    this.common.showLoading();
-    this.service.getHistoryByProviderId(this.userDetail?._id).subscribe(
+  onIonInfinite(event: InfiniteScrollCustomEvent) {
+    if (this.currentdata.length === this.limit) {
+      this.page = this.page + 1;
+      this.getHistoryByProviderId(event)
+    } else {
+      event.target.complete();
+    }
+  }
+
+  getHistoryByProviderId(event?: any) {
+    if (!event) {
+      this.common.showLoading();
+    }
+
+    const data = {
+      userID: this.userDetail?._id,
+      limit: this.limit,
+      page: this.page,
+    }
+
+    this.service.getHistoryByProviderId(this.userDetail?._id, data).subscribe(
       (res: any) => {
-        this.common.hideLoading();
+        if (event) {
+          event.target.complete();
+        } else {
+          this.common.hideLoading();
+        }
         console.log(res);
-        this.historyData = res.data;
+        this.currentdata = res.data;
+        this.historyData = this.historyData.concat(this.currentdata);
         // this.common.presentToaster(res?.message)
       },
       (err) => {

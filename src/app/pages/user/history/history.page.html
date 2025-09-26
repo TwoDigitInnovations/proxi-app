@@ -28,4 +28,8 @@
   <div class="noValidation_div" *ngIf="historyData.length === 0">
     <p class="noValidation_text">No History Available</p>
   </div>
+
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

@@ -4,7 +4,7 @@
       <img class="user_img" *ngIf="userDetail?.profile" [src]="userDetail?.profile" />
       <img class="user_img" *ngIf="!userDetail?.profile" src="../../../../assets/images/image-4.png" />
       <div>
-        <p class="helloMike_text">Hello Mike</p>
+        <p class="helloMike_text">Hello {{userDetail?.name}}</p>
         <p class="haveGoodDay_text">Have a good day!</p>
       </div>
     </div>
@@ -52,21 +52,21 @@
 
       <div class="visitorsStatus_card">
         <div class="scheduled_div">
-          <p class="number_text">78</p>
+          <p class="number_text">{{visitorsStatusData?.totalAppoint}}</p>
           <p class="scheduled_text">Scheduled</p>
         </div>
 
         <div class="border_div"></div>
 
         <div class="scheduled_div">
-          <p class="number_text">13</p>
+          <p class="number_text">{{visitorsStatusData?.completedAppoint}}</p>
           <p class="scheduled_text">Completed</p>
         </div>
 
         <div class="border_div"></div>
 
         <div class="scheduled_div">
-          <p class="number_text">44</p>
+          <p class="number_text">{{visitorsStatusData?.pendingAppoint}}</p>
           <p class="scheduled_text">Remaining</p>
         </div>
       </div>

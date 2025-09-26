@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { InfiniteScrollCustomEvent, NavController } from '@ionic/angular';
 import { CommonService } from 'src/app/common.service';
 import { ServiceService } from 'src/app/service.service';
 
@@ -11,6 +11,11 @@ import { ServiceService } from 'src/app/service.service';
 })
 export class MyAppointmentsProviderPage implements OnInit {
   appointmentByProviderData: any = [];
+  userDetail: any;
+
+  currentdata: any = [];
+  limit: any = 10;
+  page: any = 1;
 
   constructor(
     private navCtrl: NavController,
@@ -22,6 +27,12 @@ export class MyAppointmentsProviderPage implements OnInit {
   }
 
   ionViewWillEnter() {
+    const userDetail = localStorage.getItem('userDetail')
+    if (userDetail) {
+      this.userDetail = JSON.parse(userDetail)
+    }
+    console.log(this.userDetail)
+
     this.getAppointmentByProvider();
   }
 
@@ -31,14 +42,37 @@ export class MyAppointmentsProviderPage implements OnInit {
     })
   }
 
-  getAppointmentByProvider() {
-    this.common.showLoading();
-    this.service.getAppointmentByProvider().subscribe(
+  onIonInfinite(event: InfiniteScrollCustomEvent) {
+    if (this.currentdata.length === this.limit) {
+      this.page = this.page + 1;
+      this.getAppointmentByProvider(event)
+    } else {
+      event.target.complete();
+    }
+  }
+
+  getAppointmentByProvider(event?: any) {
+    if (!event) {
+      this.common.showLoading();
+    }
+
+    const data = {
+      userID: this.userDetail?._id,
+      limit: this.limit,
+      page: this.page,
+    }
+
+    this.service.getAppointmentByProvider(data).subscribe(
       (res: any) => {
-        this.common.hideLoading();
+        if (event) {
+          event.target.complete();
+        } else {
+          this.common.hideLoading();
+        }
         if (res.status) {
-          console.log(res?.data[0]._id);
-          this.appointmentByProviderData = res.data;
+          // console.log(res?.data[0]._id);
+          this.currentdata = res.data;
+          this.appointmentByProviderData = this.appointmentByProviderData.concat(this.currentdata);
         }
       },
       (err) => {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { InfiniteScrollCustomEvent, NavController } from '@ionic/angular';
 import { CommonService } from 'src/app/common.service';
 import { ServiceService } from 'src/app/service.service';
 import * as moment from 'moment';
@@ -15,6 +15,10 @@ export class MyAppointmentsPage implements OnInit {
   appointmentByUserData: any = [];
   moment: any = moment;
   userDetail: any;
+
+  currentdata: any = [];
+  limit: any = 10;
+  page: any = 1;
 
   constructor(
     private navCtrl: NavController,
@@ -47,14 +51,36 @@ export class MyAppointmentsPage implements OnInit {
     })
   }
 
-  getAppointmentByUser() {
-    this.common.showLoading();
-    this.service.getAppointmentByUser().subscribe(
+  onIonInfinite(event: InfiniteScrollCustomEvent) {
+    if (this.currentdata.length === this.limit) {
+      this.page = this.page + 1;
+      this.getAppointmentByUser(event)
+    } else {
+      event.target.complete();
+    }
+  }
+
+  getAppointmentByUser(event?: any) {
+    if (!event) {
+      this.common.showLoading();
+    }
+
+    const data = {
+      userID: this.userDetail?._id,
+      limit: this.limit,
+      page: this.page,
+    }
+
+    this.service.getAppointmentByUser(data).subscribe(
       (res: any) => {
-        this.common.hideLoading();
+        if (event) {
+          event.target.complete();
+        } else {
+          this.common.hideLoading();
+        }
         if (res.status) {
-          console.log(res?.data[0]._id);
-          this.appointmentByUserData = res.data;
+          this.currentdata = res.data;
+          this.appointmentByUserData = this.appointmentByUserData.concat(this.currentdata);
         }
       },
       (err) => {

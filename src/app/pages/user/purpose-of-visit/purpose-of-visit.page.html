@@ -12,7 +12,38 @@
 <ion-content class="mainBackground">
   <div style="padding: 20px;">
 
-    <div class="w_100">
+    <div class="center">
+      <img class="appointmentsDetails_img" [src]="appointmentIdData?.service_provider?.profile" />
+    </div>
+
+    <div class="appointmentsDetails_card">
+      <div class="name_div">
+        <p class="name_text">Name :</p>
+        <p class="louisLitt_text">{{appointmentIdData?.name}}</p>
+      </div>
+
+      <div class="phoneNo_div">
+        <p class="name_text">Phone no :</p>
+        <p class="louisLitt_text">{{appointmentIdData?.phone}}</p>
+      </div>
+
+      <div class="phoneNo_div">
+        <p class="name_text">Gender :</p>
+        <p class="louisLitt_text">{{appointmentIdData?.gender}}</p>
+      </div>
+
+      <div class="phoneNo_div">
+        <p class="name_text">Check-In time :</p>
+        <p class="louisLitt_text">{{appointmentIdData?.time}}</p>
+      </div>
+
+      <div class="purposeOfVisit_div">
+        <p class="purposeOfVisit_text">Purpose of Visit :</p>
+        <p class="purposeOfVisit_desc_text">{{appointmentIdData?.purpose_of_visit}}</p>
+      </div>
+    </div>
+
+    <!-- <div class="w_100">
       <div class="w_100">
         <p class="name_text">Name</p>
         <p class="email_text">{{appointmentIdData?.name}}</p>
@@ -33,6 +64,7 @@
         <p class="name_text">Purpose of Visit</p>
         <p class="email_text">{{appointmentIdData?.purpose_of_visit}}</p>
       </div>
-    </div>
+    </div> -->
+
   </div>
 </ion-content>

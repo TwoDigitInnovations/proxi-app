@@ -84,14 +84,36 @@ export class ServiceService {
     return this.common.get(url);
   }
 
-  getAppointmentByUser() {
+  // getAppointmentByUser() {
+  //   const url = `appointment/getAppointmentByUser`;
+  //   return this.common.get(url,);
+  // }
+
+  getAppointmentByUser(data?: any) {
+    let d = new HttpParams();
+    if (data) {
+      d = d.append('limit', data?.limit);
+      d = d.append('page', data?.page);
+    }
+
     const url = `appointment/getAppointmentByUser`;
-    return this.common.get(url,);
+    return this.common.get(url, d);
   }
 
-  getAppointmentByProvider() {
+  // getAppointmentByProvider() {
+  //   const url = `appointment/getAppointmentByProvider`;
+  //   return this.common.get(url,);
+  // }
+
+  getAppointmentByProvider(data?: any) {
+    let d = new HttpParams();
+    if (data) {
+      d = d.append('limit', data?.limit);
+      d = d.append('page', data?.page);
+    }
+
     const url = `appointment/getAppointmentByProvider`;
-    return this.common.get(url,);
+    return this.common.get(url, d);
   }
 
   getRequestAppointmentByProviderId(id: any) {
@@ -109,14 +131,36 @@ export class ServiceService {
     return this.common.get(url,);
   }
 
-  getHistoryByUserId(id: any) {
+  // getHistoryByUserId(id: any) {
+  //   const url = `appointment/getHistoryByUserId/${id}`;
+  //   return this.common.get(url);
+  // }
+
+  getHistoryByUserId(id: any, data?: any) {
+    let d = new HttpParams();
+    if (data) {
+      d = d.append('limit', data?.limit);
+      d = d.append('page', data?.page);
+    }
+
     const url = `appointment/getHistoryByUserId/${id}`;
-    return this.common.get(url);
+    return this.common.get(url, d);
   }
 
-  getHistoryByProviderId(id: any) {
+  // getHistoryByProviderId(id: any) {
+  //   const url = `appointment/getHistoryByProviderId/${id}`;
+  //   return this.common.get(url);
+  // }
+
+  getHistoryByProviderId(id: any, data?: any) {
+    let d = new HttpParams();
+    if (data) {
+      d = d.append('limit', data?.limit);
+      d = d.append('page', data?.page);
+    }
+
     const url = `appointment/getHistoryByProviderId/${id}`;
-    return this.common.get(url);
+    return this.common.get(url, d);
   }
 
   createService(data: any) {
@@ -132,5 +176,10 @@ export class ServiceService {
   updateService(data: any) {
     const url = `service/updateService`;
     return this.common.post(url, data);
+  }
+
+  getVisitorsStatus() {
+    const url = `appointment/getVisitorsStatus`;
+    return this.common.get(url,);
   }
 }

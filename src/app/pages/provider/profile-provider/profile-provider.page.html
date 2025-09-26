@@ -45,64 +45,10 @@
       </div>
 
       <div class="w_100">
-        <ion-input [readonly]="!isEdit" class="email_input Raleway" type="text" placeholder="Service Name"
-          name="service_name" [(ngModel)]="profileModel.service_name" #service_name="ngModel" required></ion-input>
-        <p class="validField" *ngIf="submitted && service_name?.errors?.['required']">Service Name is required.</p>
-      </div>
-
-      <div class="w_100">
-        <div class="address_div">
-          <ion-input [readonly]="!isEdit" class="name_input Raleway" type="text" placeholder="Address" name="address"
-            [(ngModel)]="profileModel.address" #address="ngModel" required
-            (ngModelChange)="UpdateSearchResults($event)"></ion-input>
-          <ion-card class="search_div" *ngIf='showLocation'>
-            <ion-list class="w_100 pad_0">
-              <ion-item class="search_item" *ngFor='let item of autocompleteItems' (click)='SelectSearchResult(item)'>
-                {{item.description}}
-              </ion-item>
-            </ion-list>
-          </ion-card>
-        </div>
-        <p class="validField" *ngIf="submitted && address?.errors?.['required']">
-          Address is required.
-        </p>
-      </div>
-
-      <div class="w_100">
-        <div style="display: flex; align-items: center; margin-top: 20px; gap: 10px; margin-bottom: 5px;">
-          <ion-input [readonly]="!isEdit" class="email_input Raleway" style="margin-top: 0px !important;" type="time"
-            placeholder="Service Slot" name="service_slot" [(ngModel)]="profileModel.service_slot"
-            #service_slot="ngModel" (ngModelChange)="selectedServiceSlot($event)"></ion-input>
-          <ion-button [disabled]="!isEdit" class="add_btn Raleway" (click)="addServiceSlot()">Add</ion-button>
-        </div>
-
-        <ion-grid class="pad_0">
-          <ion-row>
-            <ion-col size="4" class="addServiceSlot_div" *ngFor="let item of serviceSlotData">
-              <ion-icon name="close-circle" class="closeCircle_icon1" (click)="removeServiceSlotImage(item)"
-                *ngIf="isEdit"></ion-icon>
-              <p class="time_text">{{item}}</p>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-
-        <!-- <p class="validField" *ngIf="submitted && service_slot?.errors?.['required']">Service Slot is required.</p> -->
-      </div>
-
-      <div class="ownername_div">
-        <ion-select [disabled]="!isEdit" class="ionSelectOption Raleway" label="Select Category" cancelText="CANCEL"
-          okText="OK" name="category" [(ngModel)]="profileModel.category" [value]="profileModel.category"
-          (ngModelChange)="selectedameneties($event)">
-          <ion-select-option *ngFor="let item of categoryData" [value]="item._id">{{item.name}}</ion-select-option>
-        </ion-select>
-      </div>
-
-      <div class="w_100">
-        <textarea [readonly]="!isEdit" class="textarea Raleway" placeholder="Service Description" rows="4"
-          name="service_description" [(ngModel)]="profileModel.service_description" #service_description="ngModel"
-          required></textarea>
-        <p class="validField" *ngIf="submitted && service_description?.errors?.['required']">
-          Service Description is required.
+        <textarea [readonly]="!isEdit" class="textarea Raleway" placeholder="About us" rows="4" name="about_us"
+          [(ngModel)]="profileModel.about_us" #about_us="ngModel" required></textarea>
+        <p class="validField" *ngIf="submitted && about_us?.errors?.['required']">
+          About us is required.
         </p>
       </div>
 

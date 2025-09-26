@@ -14,6 +14,10 @@ export class HomeProviderPage implements OnInit {
   appointmentByProviderData: any = [];
   changeStatusOpen: any = false;
   isAvailable: any = 'true';
+  visitorsStatusData: any = {};
+
+  limit: any = 5;
+  page: any = 1;
 
   constructor(
     private navCtrl: NavController,
@@ -34,15 +38,23 @@ export class HomeProviderPage implements OnInit {
 
     this.getAppointmentByProvider();
     this.getProfile();
+    this.getVisitorsStatus();
   }
 
   getAppointmentByProvider() {
     this.common.showLoading();
-    this.service.getAppointmentByProvider().subscribe(
+
+    const data = {
+      userID: this.userDetail?._id,
+      limit: this.limit,
+      page: this.page,
+    }
+
+    this.service.getAppointmentByProvider(data).subscribe(
       (res: any) => {
         this.common.hideLoading();
         if (res.status) {
-          console.log(res?.data[0]._id);
+          // console.log(res?.data[0]._id);
           this.appointmentByProviderData = res.data;
         }
       },
@@ -99,6 +111,24 @@ export class HomeProviderPage implements OnInit {
             this.isAvailable = 'false';
           }
           localStorage.setItem('userDetail', JSON.stringify(res?.data))
+        }
+      },
+      (err) => {
+        this.common.hideLoading();
+        console.log(err);
+        this.common.presentToaster(err?.error?.message);
+      }
+    );
+  }
+
+  getVisitorsStatus() {
+    this.common.showLoading();
+    this.service.getVisitorsStatus().subscribe(
+      (res: any) => {
+        this.common.hideLoading();
+        if (res.status) {
+          console.log(res.data);
+          this.visitorsStatusData = res.data;
         }
       },
       (err) => {
