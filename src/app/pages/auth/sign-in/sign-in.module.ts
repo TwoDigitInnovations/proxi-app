@@ -8,13 +8,17 @@ import { SignInPageRoutingModule } from './sign-in-routing.module';
 
 import { SignInPage } from './sign-in.page';
 
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SignInPageRoutingModule
+    SignInPageRoutingModule,
+    TranslateDirective,
+    TranslatePipe,
   ],
   declarations: [SignInPage]
 })
-export class SignInPageModule {}
+export class SignInPageModule { }

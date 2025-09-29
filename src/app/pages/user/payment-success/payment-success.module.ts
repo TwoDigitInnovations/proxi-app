@@ -8,13 +8,17 @@ import { PaymentSuccessPageRoutingModule } from './payment-success-routing.modul
 
 import { PaymentSuccessPage } from './payment-success.page';
 
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PaymentSuccessPageRoutingModule
+    PaymentSuccessPageRoutingModule,
+    TranslateDirective,
+    TranslatePipe,
   ],
   declarations: [PaymentSuccessPage]
 })
-export class PaymentSuccessPageModule {}
+export class PaymentSuccessPageModule { }

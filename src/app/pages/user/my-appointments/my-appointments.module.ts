@@ -8,13 +8,17 @@ import { MyAppointmentsPageRoutingModule } from './my-appointments-routing.modul
 
 import { MyAppointmentsPage } from './my-appointments.page';
 
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MyAppointmentsPageRoutingModule
+    MyAppointmentsPageRoutingModule,
+    TranslateDirective,
+    TranslatePipe,
   ],
   declarations: [MyAppointmentsPage]
 })
-export class MyAppointmentsPageModule {}
+export class MyAppointmentsPageModule { }

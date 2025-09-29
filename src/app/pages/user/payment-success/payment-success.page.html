@@ -2,9 +2,9 @@
   <div style="padding: 20px;">
     <div class="center flex_col">
       <img class="checkemeark_img" src="../../../../assets/images/image-2.png" />
-      <p class="congratulations_text Poppins">Congratulations! </p>
-      <p class="booked_text Poppins">Your Slot has been booked!</p>
-      <p class="ticket_text Poppins">TICKET</p>
+      <p class="congratulations_text Poppins">{{'Congratulations' | translate}}!</p>
+      <p class="booked_text Poppins">{{'Your Slot has been booked' | translate}}!</p>
+      <p class="ticket_text Poppins">{{'TICKET' | translate}}</p>
 
       <div class="card">
         <div class="center">
@@ -15,27 +15,27 @@
           <ion-grid class="pad_0">
             <ion-row>
               <ion-col size="6" style="padding:0px 5px 0px 0px;">
-                <p class="name_text Poppins">NAME</p>
+                <p class="name_text Poppins">{{'NAME' | translate}}</p>
                 <p class="surendhar_text Poppins">{{appointmentIdData?.name}}</p>
               </ion-col>
               <ion-col size="6" style="padding:0px 0px 0px 5px !important;">
-                <p class="name_text Poppins">Ticket Number</p>
+                <p class="name_text Poppins">{{'Ticket Number' | translate}}</p>
                 <p class="surendhar_text Poppins">{{appointmentIdData?.ticketNumber}}</p>
               </ion-col>
               <ion-col size="6" class="mobile_div">
-                <p class="name_text Poppins">MOBILE</p>
+                <p class="name_text Poppins">{{'MOBILE' | translate}}</p>
                 <p class="surendhar_text Poppins">{{appointmentIdData?.phone}}</p>
               </ion-col>
               <ion-col size="6" class="gender_div">
-                <p class="name_text Poppins">Gender</p>
+                <p class="name_text Poppins">{{'Gender' | translate}}</p>
                 <p class="surendhar_text Poppins">{{appointmentIdData?.gender}}</p>
               </ion-col>
               <ion-col size="12" class="pad_0" style="margin-top: 10px;">
-                <p class="name_text Poppins">Purpose of visit</p>
+                <p class="name_text Poppins">{{'Purpose of visit' | translate}}</p>
                 <p class="surendhar_text Poppins">{{appointmentIdData?.purpose_of_visit}}</p>
               </ion-col>
               <ion-col size="12" class="pad_0 center flex_col" style="margin-top: 10px;">
-                <p class="name_text Poppins">Transaction ID</p>
+                <p class="name_text Poppins">{{'Transaction ID' | translate}}</p>
                 <p class="surendhar_text Poppins">21487987329578</p>
               </ion-col>
             </ion-row>
@@ -43,7 +43,7 @@
         </div>
       </div>
 
-      <ion-button class="goToHome_btn" (click)="goToHome()">Go To Home</ion-button>
+      <ion-button class="goToHome_btn" (click)="goToHome()">{{'Go To Home' | translate}}</ion-button>
     </div>
   </div>
 </ion-content>

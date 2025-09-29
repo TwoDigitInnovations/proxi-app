@@ -6,7 +6,7 @@
     <div class="address_div">
       <div class="mainAddressInput_div">
         <img class="mapImg" src="../../../../assets/images/map.png" />
-        <ion-input class="name_input SFProText" type="text" placeholder="search here" name="address"
+        <ion-input class="name_input SFProText" type="text" [placeholder]="'search here' | translate" name="address"
           [(ngModel)]="address" (ngModelChange)="UpdateSearchResults($event)"></ion-input>
       </div>
       <ion-card class="search_div" *ngIf='showLocation'>
@@ -36,7 +36,7 @@
             <div class="mainDirections_div">
               <div style="padding: 20px;">
                 <div class="mainTastyliciousFood_div">
-                  <p class="tastylicious_text SFProText">Tastylicious Food and company</p>
+                  <p class="tastylicious_text SFProText">{{'Tastylicious Food and company' | translate}}</p>
                   <ion-icon class="close_icon" name="close-circle-outline" (click)="isAlertOpen=false"></ion-icon>
                 </div>
 
@@ -49,10 +49,10 @@
 
                 <div class="mainBtn_div">
                   <ion-button class="directions_btn SFProText"><img class="directions_img"
-                      src="../../../../assets/images/directionsImg.png" />Directions</ion-button>
+                      src="../../../../assets/images/directionsImg.png" />{{'Directions' | translate}}</ion-button>
                   <ion-button class="bookAppointment_btn SFProText" (click)="bookAppointment()"><img
-                      class="bookAppointment_img" src="../../../../assets/images/bookAppointmentImg.png" />Book
-                    Appointment</ion-button>
+                      class="bookAppointment_img" src="../../../../assets/images/bookAppointmentImg.png" />
+                    {{'Book Appointment' | translate}}</ion-button>
                 </div>
 
                 <div class="directionsImage_div">
@@ -61,24 +61,24 @@
               </div>
 
               <div style="padding: 0px 0px 10px 0px;">
-                <p class="overview_text SFProText">Overview</p>
+                <p class="overview_text SFProText">{{'Overview' | translate}}</p>
                 <p class="loremIpsum_text SFProText">{{selectedService?.service_description}}</p>
                 <div class="mainAlarm_div">
                   <img src="../../../../assets/images/alarmImg.png" />
                   <div>
-                    <p class="min_text SFProText">50 min</p>
-                    <p class="min_text1 SFProText">(Average Time for your turn)</p>
+                    <p class="min_text SFProText">{{'50 min' | translate}}</p>
+                    <p class="min_text1 SFProText">({{'Average Time for your turn' | translate}})</p>
                   </div>
                 </div>
                 <div class="mainCrowdDetection_div">
-                  <p class="crowdDetection_text SFProText">Crowd Detection</p>
+                  <p class="crowdDetection_text SFProText">{{'Crowd Detection' | translate}}</p>
                   <div class="high_div">
                     <p class="rounded_text"></p>
-                    <p class="high_text SFProText">High</p>
+                    <p class="high_text SFProText">{{'High' | translate}}</p>
                   </div>
                 </div>
                 <div class="mainCrowdAvailable_div">
-                  <p class="crowdAvailable_text SFProText">Crowd Available</p>
+                  <p class="crowdAvailable_text SFProText">{{'Crowd Available' | translate}}</p>
                   <p class="crowdAvailable_text1 SFProText">80</p>
                 </div>
               </div>
@@ -97,11 +97,11 @@
             <div class="mainDirections_div">
               <div style="padding: 20px;">
                 <div class="mainTastyliciousFood_div">
-                  <p class="tastylicious_text SFProText">Tastylicious Food and company</p>
+                  <p class="tastylicious_text SFProText">{{'Tastylicious Food and company' | translate}}</p>
                   <ion-icon class="close_icon" name="close-circle-outline" (click)="timeSlotOpen=false"></ion-icon>
                 </div>
 
-                <p class="appointment_text Poppins">Appointment</p>
+                <p class="appointment_text Poppins">{{'Appointment' | translate}}</p>
                 <div class="timeSlotCard">
                   <ion-grig>
                     <ion-row>
@@ -117,7 +117,7 @@
                     </ion-row>
                   </ion-grig>
                 </div>
-                <p class="availableTime_text Poppins">Available Time</p>
+                <p class="availableTime_text Poppins">{{'Available Time' | translate}}</p>
                 <ion-grig>
                   <ion-row>
                     <ion-col class="pad_0" size="3" *ngFor="let item of selectedService?.service_slot">
@@ -128,7 +128,7 @@
                   </ion-row>
                 </ion-grig>
 
-                <ion-button class="confirm_btn" (click)="confirmAppointment()">Confirm</ion-button>
+                <ion-button class="confirm_btn" (click)="confirmAppointment()">{{'Confirm' | translate}}</ion-button>
               </div>
             </div>
           </div>
@@ -145,52 +145,57 @@
             <div class="mainDirections_div">
               <div style="padding: 20px;">
                 <div class="mainTastyliciousFood_div">
-                  <p class="tastylicious_text SFProText">Tastylicious Food and company</p>
+                  <p class="tastylicious_text SFProText">{{'Tastylicious Food and company' | translate}}</p>
                   <ion-icon class="close_icon" name="close-circle-outline" (click)="payAmountOpen=false"></ion-icon>
                 </div>
 
                 <form class="w_100" #payAmountForm="ngForm">
-                  <ion-input class="name" type="text" label="Name" label-placement="floating" fill="outline"
-                    placeholder="Enter Name" name="name" [(ngModel)]="payAmountModel.name" #name="ngModel"
-                    required></ion-input>
-                  <p class="validField" *ngIf="submitted && name?.errors?.['required']">Name is required.</p>
+                  <ion-input class="name" type="text" [label]="'Name' | translate" label-placement="floating"
+                    fill="outline" [placeholder]="'Enter Name' | translate" name="name"
+                    [(ngModel)]="payAmountModel.name" #name="ngModel" required></ion-input>
+                  <p class="validField" *ngIf="submitted && name?.errors?.['required']">
+                    {{'Name is required' | translate}}.</p>
 
-                  <ion-input class="password" type="email" label="Email" label-placement="floating" fill="outline"
-                    placeholder="Enter email" name="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                    [(ngModel)]="payAmountModel.email" #email="ngModel" required></ion-input>
-                  <p class="validField" *ngIf="submitted && email?.errors?.['required']">Email is required.</p>
+                  <ion-input class="password" type="email" [label]="'Email' | translate" label-placement="floating"
+                    fill="outline" [placeholder]="'Enter email' | translate" name="email"
+                    pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="payAmountModel.email"
+                    #email="ngModel" required></ion-input>
+                  <p class="validField" *ngIf="submitted && email?.errors?.['required']">
+                    {{'Email is required' | translate}}.</p>
 
-                  <p class="validField" *ngIf="submitted && email?.errors?.['pattern']">Invalid your email</p>
+                  <p class="validField" *ngIf="submitted && email?.errors?.['pattern']">
+                    {{'Invalid your email' | translate}}</p>
 
-                  <ion-input class="password" type="number" label="Mobile Number" label-placement="floating"
-                    fill="outline" placeholder="Enter Mobile Number" name="phone" [(ngModel)]="payAmountModel.phone"
-                    #phone="ngModel" required></ion-input>
-                  <p class="validField" *ngIf="submitted && phone?.errors?.['required']">Mobile Number is
-                    required.
+                  <ion-input class="password" type="number" [label]="'Mobile Number' | translate"
+                    label-placement="floating" fill="outline" [placeholder]="'Enter Mobile Number' | translate"
+                    name="phone" [(ngModel)]="payAmountModel.phone" #phone="ngModel" required></ion-input>
+                  <p class="validField" *ngIf="submitted && phone?.errors?.['required']">
+                    {{'Mobile Number is required' | translate}}.
                   </p>
 
                   <div class="w_100">
                     <div class="selectCountry_div">
                       <ion-select class="selectCountry" name="gender" [(ngModel)]="payAmountModel.gender"
-                        #gender="ngModel" required>
-                        <ion-select-option class="w_100" value="">Gender</ion-select-option>
-                        <ion-select-option class="w_100" value="Male">Male</ion-select-option>
-                        <ion-select-option class="w_100" value="Female">Female</ion-select-option>
+                        #gender="ngModel" required [cancelText]="'CANCEL' | translate" [okText]="'OK' | translate">
+                        <ion-select-option class="w_100" value="">{{'Gender' | translate}}</ion-select-option>
+                        <ion-select-option class="w_100" value="Male">{{'Male' | translate}}</ion-select-option>
+                        <ion-select-option class="w_100" value="Female">{{'Female' | translate}}</ion-select-option>
                       </ion-select>
                     </div>
                     <p class="validField" *ngIf="submitted && gender?.errors?.['required']">
-                      Gender is required.
+                      {{'Gender is required' | translate}}.
                     </p>
                   </div>
 
-                  <ion-textarea class="textarea" label="Purpose of Visit" labelPlacement="floating" fill="outline"
-                    placeholder="Enter text" rows="4" name="purpose_of_visit"
+                  <ion-textarea class="textarea" [label]="'Purpose of Visit' | translate" labelPlacement="floating"
+                    fill="outline" [placeholder]="'Enter Purpose of Visit' | translate" rows="4" name="purpose_of_visit"
                     [(ngModel)]="payAmountModel.purpose_of_visit" #purpose_of_visit="ngModel" required></ion-textarea>
                   <p class="validField" *ngIf="submitted && purpose_of_visit?.errors?.['required']">
-                    Purpose of Visit is required.
+                    {{'Purpose of Visit is required' | translate}}.
                   </p>
 
-                  <ion-button class="payAmount_btn" (click)="payAmount(payAmountForm)">Pay Token Amount</ion-button>
+                  <ion-button class="payAmount_btn" (click)="payAmount(payAmountForm)">
+                    {{'Pay Token Amount' | translate}}</ion-button>
                 </form>
               </div>
             </div>

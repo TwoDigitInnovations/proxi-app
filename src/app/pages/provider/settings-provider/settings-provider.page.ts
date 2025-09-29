@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   standalone: false,
@@ -42,6 +43,7 @@ export class SettingsProviderPage implements OnInit {
 
   constructor(
     private navCtrl: NavController,
+    private translate: TranslateService,
   ) { }
 
   ngOnInit() {
@@ -53,13 +55,16 @@ export class SettingsProviderPage implements OnInit {
       this.userDetail = JSON.parse(userDetail)
     }
     console.log(userDetail)
+
+    const lng = localStorage.getItem('language');
+    this.langSelected = lng || 'fr'
   }
 
   handleChange(lang: any) {
-    this.langSelected = lang
-    // this.translate.use(lang);
     console.log(lang)
-    localStorage.setItem('transLang', lang);
+    this.langSelected = lang
+    this.translate.use(lang);
+    localStorage.setItem('language', lang);
   }
 
   profilePage() {

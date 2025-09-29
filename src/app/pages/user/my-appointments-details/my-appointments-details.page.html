@@ -2,7 +2,7 @@
   <div class="mainHeader">
     <div class="left">
       <ion-icon class="back_icon" (click)="goBack()" name="chevron-back-outline"></ion-icon>
-      <p class="mainTitle_text PPNeueMontreal">My Appointments Details</p>
+      <p class="mainTitle_text PPNeueMontreal">{{'My Appointments Details' | translate}}</p>
     </div>
     <img class="user_icon" *ngIf="userDetail?.profile" [src]="userDetail?.profile" />
     <ion-icon class="user_icon1" *ngIf="!userDetail?.profile" name="person-outline"></ion-icon>
@@ -16,7 +16,7 @@
       <p class="drAndrew_text Inter">{{appointmentIdData?.service_provider?.name}}</p>
       <p class="descript_text Inter">{{appointmentIdData?.service_provider?.about_us}}</p>
 
-      <ion-button class="signIn_btn" (click)="purposeOfVisit()">See Purpose of Visit</ion-button>
+      <ion-button class="signIn_btn" (click)="purposeOfVisit()">{{'See Purpose of Visit' | translate}}</ion-button>
     </div>
   </div>
 </ion-content>

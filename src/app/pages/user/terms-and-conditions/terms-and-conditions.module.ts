@@ -8,13 +8,17 @@ import { TermsAndConditionsPageRoutingModule } from './terms-and-conditions-rout
 
 import { TermsAndConditionsPage } from './terms-and-conditions.page';
 
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TermsAndConditionsPageRoutingModule
+    TermsAndConditionsPageRoutingModule,
+    TranslateDirective,
+    TranslatePipe,
   ],
   declarations: [TermsAndConditionsPage]
 })
-export class TermsAndConditionsPageModule {}
+export class TermsAndConditionsPageModule { }

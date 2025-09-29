@@ -1,7 +1,7 @@
 <ion-header>
   <div class="mainHeader">
     <div class="left">
-      <p class="mainTitle_text PPNeueMontreal">My Appointments</p>
+      <p class="mainTitle_text PPNeueMontreal">{{'My Appointments' | translate}}</p>
     </div>
     <img class="user_icon" *ngIf="userDetail?.profile" [src]="userDetail?.profile" />
     <ion-icon class="user_icon1" *ngIf="!userDetail?.profile" name="person-outline"></ion-icon>
@@ -26,7 +26,7 @@
   </div>
 
   <div class="noValidation_div" *ngIf="appointmentByUserData.length === 0">
-    <p class="noValidation_text">No Appointments</p>
+    <p class="noValidation_text">{{'No Appointments' | translate}}</p>
   </div>
 
   <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">

@@ -8,13 +8,17 @@ import { ForgotPasswordPageRoutingModule } from './forgot-password-routing.modul
 
 import { ForgotPasswordPage } from './forgot-password.page';
 
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ForgotPasswordPageRoutingModule
+    ForgotPasswordPageRoutingModule,
+    TranslateDirective,
+    TranslatePipe,
   ],
   declarations: [ForgotPasswordPage]
 })
-export class ForgotPasswordPageModule {}
+export class ForgotPasswordPageModule { }

@@ -8,13 +8,17 @@ import { SettingsProviderPageRoutingModule } from './settings-provider-routing.m
 
 import { SettingsProviderPage } from './settings-provider.page';
 
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SettingsProviderPageRoutingModule
+    SettingsProviderPageRoutingModule,
+    TranslatePipe,
+    TranslateDirective,
   ],
   declarations: [SettingsProviderPage]
 })
-export class SettingsProviderPageModule {}
+export class SettingsProviderPageModule { }

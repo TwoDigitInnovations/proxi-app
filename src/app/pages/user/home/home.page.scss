@@ -61,10 +61,18 @@ capacitor-google-map {
 }
 
 .search_item {
-    font-size: 14px;
+    font-size: 14px !important;
     --min-height: 30px;
     border-bottom: 1px solid #FF5207;
     width: 100%;
+
+    &::part(native) {
+        --background: white !important;
+        color: black;
+        font-size: 14px !important;
+        border-bottom: 1px solid #FF5207;
+        width: 100%;
+    }
 }
 
 .mainBanks_div {

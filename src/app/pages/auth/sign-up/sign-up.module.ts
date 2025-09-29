@@ -8,13 +8,17 @@ import { SignUpPageRoutingModule } from './sign-up-routing.module';
 
 import { SignUpPage } from './sign-up.page';
 
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SignUpPageRoutingModule
+    SignUpPageRoutingModule,
+    TranslateDirective,
+    TranslatePipe,
   ],
   declarations: [SignUpPage]
 })
-export class SignUpPageModule {}
+export class SignUpPageModule { }

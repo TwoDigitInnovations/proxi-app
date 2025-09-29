@@ -2,7 +2,7 @@
   <div class="mainHeader">
     <div class="left">
       <ion-icon class="back_icon" (click)="goBack()" name="chevron-back-outline"></ion-icon>
-      <p class="mainTitle_text PPNeueMontreal">Purpose of Visit</p>
+      <p class="mainTitle_text PPNeueMontreal">{{'Purpose of Visit' | translate}}</p>
     </div>
     <img class="user_icon" *ngIf="userDetail?.profile" [src]="userDetail?.profile" />
     <ion-icon class="user_icon1" *ngIf="!userDetail?.profile" name="person-outline"></ion-icon>
@@ -18,27 +18,27 @@
 
     <div class="appointmentsDetails_card">
       <div class="name_div">
-        <p class="name_text">Name :</p>
+        <p class="name_text">{{'Name' | translate}} :</p>
         <p class="louisLitt_text">{{appointmentIdData?.name}}</p>
       </div>
 
       <div class="phoneNo_div">
-        <p class="name_text">Phone no :</p>
+        <p class="name_text">{{'Phone no' | translate}} :</p>
         <p class="louisLitt_text">{{appointmentIdData?.phone}}</p>
       </div>
 
       <div class="phoneNo_div">
-        <p class="name_text">Gender :</p>
+        <p class="name_text">{{'Gender' | translate}} :</p>
         <p class="louisLitt_text">{{appointmentIdData?.gender}}</p>
       </div>
 
       <div class="phoneNo_div">
-        <p class="name_text">Check-In time :</p>
+        <p class="name_text">{{'Check-In time' | translate}} :</p>
         <p class="louisLitt_text">{{appointmentIdData?.time}}</p>
       </div>
 
       <div class="purposeOfVisit_div">
-        <p class="purposeOfVisit_text">Purpose of Visit :</p>
+        <p class="purposeOfVisit_text">{{'Purpose of Visit' | translate}} :</p>
         <p class="purposeOfVisit_desc_text">{{appointmentIdData?.purpose_of_visit}}</p>
       </div>
     </div>

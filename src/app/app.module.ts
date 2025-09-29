@@ -13,6 +13,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StarRatingModule } from 'angular-star-rating';
 import { AuthInterceptor } from './interceptor';
 
+import { provideHttpClient } from '@angular/common/http';
+import { provideTranslateService } from "@ngx-translate/core";
+import { provideTranslateHttpLoader } from "@ngx-translate/http-loader";
+
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule,
@@ -21,7 +25,17 @@ import { AuthInterceptor } from './interceptor';
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true // Essential for providing multiple interceptors
-  }],
+  },
+  provideHttpClient(),
+  provideTranslateService({
+    loader: provideTranslateHttpLoader({
+      prefix: '/assets/i18n/',
+      suffix: '.json'
+    }),
+    fallbackLang: 'en',
+    lang: 'en'
+  })
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

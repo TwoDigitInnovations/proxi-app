@@ -10,6 +10,8 @@ import { HomePage } from './home.page';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { StarRatingModule } from 'angular-star-rating';
 
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +19,8 @@ import { StarRatingModule } from 'angular-star-rating';
     IonicModule,
     HomePageRoutingModule,
     StarRatingModule.forRoot(),
+    TranslateDirective,
+    TranslatePipe,
   ],
   declarations: [HomePage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

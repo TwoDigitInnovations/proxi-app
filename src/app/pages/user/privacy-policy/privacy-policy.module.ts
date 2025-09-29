@@ -8,13 +8,17 @@ import { PrivacyPolicyPageRoutingModule } from './privacy-policy-routing.module'
 
 import { PrivacyPolicyPage } from './privacy-policy.page';
 
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PrivacyPolicyPageRoutingModule
+    PrivacyPolicyPageRoutingModule,
+    TranslateDirective,
+    TranslatePipe,
   ],
   declarations: [PrivacyPolicyPage]
 })
-export class PrivacyPolicyPageModule {}
+export class PrivacyPolicyPageModule { }

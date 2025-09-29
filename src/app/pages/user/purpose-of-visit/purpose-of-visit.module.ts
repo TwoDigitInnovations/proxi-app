@@ -8,13 +8,17 @@ import { PurposeOfVisitPageRoutingModule } from './purpose-of-visit-routing.modu
 
 import { PurposeOfVisitPage } from './purpose-of-visit.page';
 
+import { TranslateDirective, TranslatePipe } from '@ngx-translate/core';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PurposeOfVisitPageRoutingModule
+    PurposeOfVisitPageRoutingModule,
+    TranslateDirective,
+    TranslatePipe,
   ],
   declarations: [PurposeOfVisitPage]
 })
-export class PurposeOfVisitPageModule {}
+export class PurposeOfVisitPageModule { }
